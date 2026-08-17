@@ -1,8 +1,8 @@
-# Checklist — Thống kê, mẫu Nhóm 2 và reset form
+# Checklist — Xuất bảng điểm CSV và Excel
 
-- [x] Thêm trang thống kê tổng hợp theo mã lớp và mã nhóm.
-- [x] Xác định nguồn dữ liệu thống kê là bản ghi cục bộ; hiển thị rõ Google Sheet là nguồn chính thức.
-- [x] Tạo báo cáo mẫu Nhóm 2 ở mức khoảng 6–7 điểm và đưa vào Google Docs.
-- [x] Thêm nút xóa bản nháp cục bộ có xác nhận.
-- [x] Tự reset form, rubric và trạng thái sau khi gửi thành công.
-- [x] Chạy kiểm thử, build và chuẩn bị lưu checkpoint mới.
+- [x] Xác định các cột dữ liệu và dùng đúng tập bản ghi đang lọc.
+- [x] Thêm nút xuất CSV có hỗ trợ tiếng Việt.
+- [x] Thêm nút xuất Excel (.xlsx) với tiêu đề và dữ liệu rõ ràng.
+- [x] Hiển thị trạng thái khi chưa có dữ liệu để xuất.
+- [x] Chạy build và kiểm tra nút tải CSV/Excel thực tế trên trang Thống kê.
+- [x] Chuẩn bị lưu checkpoint phiên bản mới.

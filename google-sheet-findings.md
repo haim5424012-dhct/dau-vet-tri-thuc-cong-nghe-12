@@ -14,3 +14,5 @@ Google Form hiện có 4 câu trả lời. Bản ghi mới của Lê Minh Khoa, 
 Google Docs mẫu Nhóm 2 đã được tạo và điền nội dung: https://docs.google.com/document/d/1l9GicMUeoqG508RHKjVNkyn3sBhnl5BAotyhcYz5ooM/edit?tab=t.0. Báo cáo dự kiến ở mức 63/100, tương đương 6,3/10.
 
 Kiểm thử Nhóm 2 đã gửi thành công qua website với mã lớp 12A1, mã nhóm N2, link Google Docs https://docs.google.com/document/d/1l9GicMUeoqG508RHKjVNkyn3sBhnl5BAotyhcYz5ooM/edit?tab=t.0. Rubric thực tế 3/4, 3/4, 3/4, 3/4, 2/4 cho điểm 62/100 = 6,2/10. Sau gửi, form reset về giá trị rỗng; trang thống kê cục bộ ghi 1 bản ghi, trung bình 62 và cao nhất 62.
+
+Kiểm thử chức năng xuất: trang Thống kê hiển thị 1 bản ghi theo bộ lọc 12A1/N2. Nút CSV báo “Đã xuất 1 bản ghi CSV”; nút Excel báo “Đã xuất 1 bản ghi Excel”. Hai định dạng lấy đúng các cột mã lớp, mã nhóm, học sinh, lớp, nhóm chủ đề, tên báo cáo, link, điểm và thời gian nộp.
