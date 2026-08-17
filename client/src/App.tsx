@@ -1,8 +1,7 @@
 // Style reminder: App shell follows the “Sổ tay thực địa” direction—warm paper canvas, field-note green, clear learning workflow, no generic centered landing page.
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Router as WouterRouter, Switch } from "wouter";
+import { Router as WouterRouter } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -10,12 +9,8 @@ import Home from "./pages/Home";
 function Router() {
   return (
     <WouterRouter base={import.meta.env.BASE_URL}>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/404" component={NotFound} />
-        {/* One-page GitHub Pages app: hash links such as #kiem-chung must stay on Home. */}
-        <Route component={Home} />
-      </Switch>
+      {/* This is a one-page learning app. Render Home for every project-site path so direct hash links never become a 404 route. */}
+      <Home />
     </WouterRouter>
   );
 }

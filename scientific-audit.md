@@ -54,3 +54,7 @@ Build production đã tạo đủ bốn asset ảnh trong `dist/public/assets`. 
 ## Chẩn đoán lỗi 404 GitHub Pages ngày 17/08/2026
 
 GitHub Pages và artifact hoạt động, nhưng ứng dụng React hiển thị trang `NotFound` khi mở project site `/dau-vet-tri-thuc-cong-nghe-12/`. Nguyên nhân là `App.tsx` dùng Wouter mà chưa truyền `base={import.meta.env.BASE_URL}`; vì vậy URL có tiền tố tên repository không khớp route `/`. Đã sửa bằng `WouterRouter` với `base={import.meta.env.BASE_URL}`, chạy lại check/test/build, đẩy commit và deploy thành công. Sau sửa, trình duyệt hiển thị đầy đủ trang chủ, 8 nhóm, rubric, biểu mẫu và khu vực Kiểm chứng AI.
+
+## Kiểm thử fragment sau commit fallback
+
+URL gốc có query cache-bust hiển thị đúng Home, nhưng URL trực tiếp có `#kiem-chung` vẫn hiển thị NotFound. Điều này cho thấy cơ chế Switch của Wouter vẫn coi fragment là một đường dẫn không khớp trong môi trường GitHub Pages. Cách sửa chắc chắn cho ứng dụng one-page là giữ `WouterRouter` chỉ làm lớp base và render `Home` không điều kiện; các anchor hash trong Home sẽ được trình duyệt xử lí nội bộ.
