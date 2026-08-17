@@ -377,3 +377,38 @@ button:not(:disabled), a[href] { cursor: pointer; }
     transform: none;
   }
 }
+
+
+/* Front-page color study: a visible mint-water wash distinguishes the landing experience from the old beige-only surface while preserving the botanical field-journal identity. */
+.site-shell {
+  background: #f1f6ef !important;
+}
+.site-header {
+  background: rgba(241, 246, 239, .97) !important;
+  border-bottom-color: #b8d1bf !important;
+}
+.teacher-strip {
+  background: linear-gradient(90deg, #e0efe4 0%, #e4f1f1 100%) !important;
+  border-top-color: #c5ddd0 !important;
+  border-bottom: 1px solid #c5ddd0;
+}
+.hero-section {
+  background: linear-gradient(118deg, #f1f6ef 0%, #e8f3ea 54%, #e1f1f2 100%);
+  border-bottom-color: #b8d1bf !important;
+}
+.hero-kicker {
+  color: #176947 !important;
+  border-color: #79b18b !important;
+  background: #dcefe1 !important;
+  box-shadow: 0 5px 16px rgba(40, 116, 81, .1);
+}
+.hero-title { color: #123f35 !important; }
+.hero-accent { color: #087d6b !important; }
+.hero-visual {
+  border-color: #82b8ad !important;
+  background: #cfe8e5 !important;
+  box-shadow: 0 18px 50px rgba(8, 117, 139, .16) !important;
+}
+.hero-visual > div {
+  background: rgba(244, 248, 241, .94) !important;
+}

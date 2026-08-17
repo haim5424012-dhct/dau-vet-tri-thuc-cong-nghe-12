@@ -1,7 +1,7 @@
-# Checklist — Sửa màu mã báo cáo trên production
+# Checklist — Màu trang đầu và thẻ nhóm ngành
 
-- [ ] Kiểm tra HTML/CSS/JS production và ảnh người dùng.
-- [ ] Xác định vì sao màu mã báo cáo chưa đủ nổi bật hoặc chưa áp dụng.
-- [ ] Sửa style/markup cho chú giải, thẻ kế hoạch, form và thống kê.
-- [ ] Triển khai lại và kiểm tra trực tiếp đủ 16 mã báo cáo.
-- [ ] Bàn giao link production đã xác minh.
+- [ ] Đối chiếu màu hero/header/trang đầu production với mã nguồn.
+- [ ] Kiểm tra màu chú giải, thẻ N1–N8 và mã báo cáo.
+- [ ] Chọn và áp dụng màu trang đầu mới đủ khác biệt nhưng vẫn cùng Field Journal.
+- [ ] Kiểm tra desktop/mobile và triển khai lại production.
+- [ ] Xác minh link mới trước khi bàn giao.
