@@ -50,3 +50,7 @@ Dự án có nền tảng sư phạm và kỹ thuật tốt để dùng như h�
 Trang chủ hiển thị đúng logo, hero và menu bổ sung “Kiểm chứng AI” trên desktop; ở viewport 390px, tiêu đề, mô tả, nút thao tác và ảnh hero co giãn phù hợp, menu chuyển sang nút mobile. Ba đường dẫn ảnh dùng `BASE_URL` và asset nội bộ `client/public/assets`.
 
 Build production đã tạo đủ bốn asset ảnh trong `dist/public/assets`. Sau khi sửa favicon, cần chạy lại build cuối để xác nhận không còn chuỗi `/manus-storage` trong artifact.
+
+## Chẩn đoán lỗi 404 GitHub Pages ngày 17/08/2026
+
+GitHub Pages và artifact hoạt động, nhưng ứng dụng React hiển thị trang `NotFound` khi mở project site `/dau-vet-tri-thuc-cong-nghe-12/`. Nguyên nhân là `App.tsx` dùng Wouter mà chưa truyền `base={import.meta.env.BASE_URL}`; vì vậy URL có tiền tố tên repository không khớp route `/`. Đã sửa bằng `WouterRouter` với `base={import.meta.env.BASE_URL}`, chạy lại check/test/build, đẩy commit và deploy thành công. Sau sửa, trình duyệt hiển thị đầy đủ trang chủ, 8 nhóm, rubric, biểu mẫu và khu vực Kiểm chứng AI.

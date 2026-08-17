@@ -1,8 +1,8 @@
 # Checklist — Khắc phục lỗi 404 GitHub Pages
 
-- [ ] Kiểm tra URL Pages, trạng thái Pages và lần chạy Actions mới nhất.
-- [ ] Kiểm tra artifact có index.html ở thư mục gốc và base path đúng tên repository.
-- [ ] Xác định lỗi do Pages, quyền truy cập, cache hoặc sai URL project site.
-- [ ] Sửa workflow/cấu hình nếu cần và đẩy commit mới.
-- [ ] Chạy lại GitHub Actions và kiểm tra HTTP trang chính, CSS, JavaScript, ảnh.
-- [ ] Bàn giao URL chính xác và hướng dẫn học sinh tải lại trang nếu còn cache.
+- [x] Kiểm tra URL Pages, trạng thái Pages và lần chạy Actions mới nhất.
+- [x] Kiểm tra artifact có index.html ở thư mục gốc và base path đúng tên repository.
+- [x] Xác định lỗi do Wouter thiếu `base={import.meta.env.BASE_URL}`, không phải lỗi artifact Pages.
+- [x] Sửa App.tsx, chạy check/test/build và đẩy commit mới.
+- [x] Chạy lại GitHub Actions thành công; trình duyệt hiển thị trang chủ và asset đúng.
+- [x] Bàn giao URL chính xác và hướng dẫn học sinh tải lại trang nếu còn cache.
