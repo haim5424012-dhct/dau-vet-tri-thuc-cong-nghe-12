@@ -58,3 +58,7 @@ GitHub Pages và artifact hoạt động, nhưng ứng dụng React hiển thị
 ## Kiểm thử fragment sau commit fallback
 
 URL gốc có query cache-bust hiển thị đúng Home, nhưng URL trực tiếp có `#kiem-chung` vẫn hiển thị NotFound. Điều này cho thấy cơ chế Switch của Wouter vẫn coi fragment là một đường dẫn không khớp trong môi trường GitHub Pages. Cách sửa chắc chắn cho ứng dụng one-page là giữ `WouterRouter` chỉ làm lớp base và render `Home` không điều kiện; các anchor hash trong Home sẽ được trình duyệt xử lí nội bộ.
+
+## Kiểm thử sau render Home không điều kiện
+
+Sau deploy run 32019724677 thành công, URL gốc có query vẫn hiển thị Home nhưng browser mở trực tiếp `/#kiem-chung` vẫn nhận nội dung NotFound. Vì code mới render `Home` không điều kiện trong WouterRouter, cần điều tra khả năng browser/proxy đang giữ bundle cũ hoặc GitHub Pages có phân biệt URL fragment ở lớp khác. Không kết luận sửa lỗi hoàn tất cho đến khi kiểm tra bundle đang phục vụ và trạng thái cache/CDN.
