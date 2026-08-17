@@ -85,3 +85,8 @@ Khu vực nhận diện mới nằm dưới thanh điều hướng, gồm biểu
 
 
 Bản kiểm tra cuối xác nhận header desktop hiển thị đủ tên giáo viên, vai trò, trường và khẩu hiệu; mobile rút gọn tên trường/khẩu hiệu nhưng vẫn giữ avatar, tên giáo viên và tên dự án. Asset `coffee-tree-mark.png` được đóng gói trong `client/public/assets`, GitHub Pages trả HTTP 200 cho trang, ảnh và favicon.
+
+
+## Audit bảo vệ dữ liệu
+
+Đã bổ sung chuẩn hóa và giới hạn độ dài dữ liệu nhập, kiểm tra mã báo cáo khớp nhóm, chỉ chấp nhận link HTTPS thuộc Google Drive/Slides, loại bản ghi localStorage sai cấu trúc khỏi thống kê, và bảo vệ CSV/Excel khỏi chuỗi có thể bị hiểu là công thức. Giao diện có mục “Bảo vệ dữ liệu” nêu rõ Google Sheet là nguồn chính thức, xóa bản nháp không xóa bản ghi đã gửi, và website tĩnh không thể chống sửa JavaScript/localStorage ở cấp hệ thống. Kiểm thử full-page desktop/mobile không ghi nhận tràn bố cục.

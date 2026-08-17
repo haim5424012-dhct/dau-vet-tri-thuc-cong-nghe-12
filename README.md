@@ -51,6 +51,14 @@ Giáo viên tạo Form gồm 9 trường: Họ và tên, Lớp, Mã lớp, Mã n
 
 Do trình duyệt gửi bằng `no-cors`, website không thể đọc phản hồi của Google. Giáo viên phải gửi một bản thử nghiệm và đối chiếu đủ 9 cột trong Google Sheet trước khi đưa đường dẫn cho học sinh.
 
+## Bảo vệ dữ liệu và giới hạn bảo mật
+
+Website có các lớp bảo vệ ở mức giao diện: giới hạn độ dài trường nhập, chỉ chấp nhận link HTTPS thuộc Google Drive/Slides, kiểm tra mã báo cáo khớp nhóm, chuẩn hóa rubric và loại bản ghi localStorage sai cấu trúc khỏi thống kê. Khi xuất CSV/Excel, các ô bắt đầu bằng `=`, `+`, `-` hoặc `@` được đánh dấu để giảm nguy cơ bị bảng tính hiểu thành công thức.
+
+Các bản ghi đã gửi trong giao diện không có nút sửa/xóa; nút “Xóa bản nháp” chỉ xóa dữ liệu chưa gửi trên trình duyệt và không xóa Google Sheet. Google Sheet là nguồn chính thức, vì vậy giáo viên cần giới hạn quyền chỉnh sửa, bật xác thực tài khoản trường nếu phù hợp và kiểm tra quyền chia sẻ của từng báo cáo.
+
+> Đây là website tĩnh. Người dùng có kỹ thuật vẫn có thể sửa JavaScript hoặc localStorage bằng công cụ trình duyệt. Các lớp frontend giúp giảm sửa nhầm và dữ liệu sai cấu trúc, nhưng không thể chống giả mạo ở cấp hệ thống. Muốn bảo vệ điểm chính thức cần backend, xác thực người dùng, phân quyền giáo viên và nhật ký thay đổi do nhà trường quản trị.
+
 ## Triển khai GitHub Pages
 
 Tạo một repository GitHub, đẩy toàn bộ mã nguồn trừ `node_modules`, `dist`, log và cache, rồi bật **Settings → Pages → Source: GitHub Actions**. Workflow [`static.yml`](./.github/workflows/static.yml) sẽ cài phụ thuộc, chạy `pnpm check`, `pnpm test`, build với `VITE_BASE_PATH=/<tên-repository>/`, đóng gói `dist/public` và deploy lên Pages.

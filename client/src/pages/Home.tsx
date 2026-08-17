@@ -66,14 +66,35 @@ const emptyForm = { student: "", className: "", classCode: "", groupCode: "", re
 type FormState = typeof emptyForm;
 type SubmissionRecord = FormState & { group: string; groupTitle: string; score: number; submittedAt: string };
 const normalizeForm = (value: Partial<FormState> | null | undefined): FormState => ({
-  student: typeof value?.student === "string" ? value.student : "",
-  className: typeof value?.className === "string" ? value.className : "",
-  classCode: typeof value?.classCode === "string" ? value.classCode : "",
-  groupCode: typeof value?.groupCode === "string" ? value.groupCode : "",
-  reportCode: typeof value?.reportCode === "string" ? value.reportCode : "N1-B1",
-  reportTitle: typeof value?.reportTitle === "string" ? value.reportTitle : "",
-  reportLink: typeof value?.reportLink === "string" ? value.reportLink : "",
+  student: typeof value?.student === "string" ? value.student.slice(0, 120) : "",
+  className: typeof value?.className === "string" ? value.className.slice(0, 40) : "",
+  classCode: typeof value?.classCode === "string" ? value.classCode.slice(0, 24) : "",
+  groupCode: typeof value?.groupCode === "string" ? value.groupCode.slice(0, 24) : "",
+  reportCode: typeof value?.reportCode === "string" ? value.reportCode.slice(0, 12) : "N1-B1",
+  reportTitle: typeof value?.reportTitle === "string" ? value.reportTitle.slice(0, 180) : "",
+  reportLink: typeof value?.reportLink === "string" ? value.reportLink.slice(0, 500) : "",
 });
+
+const validGroupIds = new Set(groups.map((group) => group.id));
+const validReportCodes = new Set(groups.flatMap((group) => group.reports.map((report) => report.code)));
+const normalizeRubric = (value: unknown): RubricState => Object.fromEntries(criteria.map((item) => {
+  const candidate = value && typeof value === "object" ? (value as Record<string, unknown>)[item.id] : 0;
+  const numeric = typeof candidate === "number" && Number.isInteger(candidate) ? candidate : 0;
+  return [item.id, Math.min(3, Math.max(0, numeric))];
+}));
+const isSafeReportLink = (value: string) => {
+  try { const url = new URL(value); return url.protocol === "https:" && (url.hostname === "docs.google.com" || url.hostname.endsWith("googleusercontent.com") || url.hostname === "drive.google.com"); } catch { return false; }
+};
+const normalizeSubmission = (value: unknown): SubmissionRecord | null => {
+  if (!value || typeof value !== "object") return null;
+  const item = value as Partial<SubmissionRecord>;
+  const normalized = normalizeForm(item);
+  if (!validGroupIds.has(item.group ?? "") || !validReportCodes.has(normalized.reportCode) || !normalized.student || !normalized.classCode || !normalized.groupCode || !normalized.reportTitle || !isSafeReportLink(normalized.reportLink)) return null;
+  const score = typeof item.score === "number" && Number.isFinite(item.score) ? Math.min(100, Math.max(0, Math.round(item.score))) : 0;
+  const submittedAt = typeof item.submittedAt === "string" && !Number.isNaN(Date.parse(item.submittedAt)) ? item.submittedAt : new Date(0).toISOString();
+  return { ...normalized, group: item.group ?? "", groupTitle: typeof item.groupTitle === "string" ? item.groupTitle.slice(0, 180) : "", score, submittedAt };
+};
+const spreadsheetSafe = (value: unknown) => { const text = String(value ?? ""); return /^[=+\-@]/.test(text) ? `'${text}` : text; };
 
 export default function Home() {
   const [activeGroup, setActiveGroup] = useState("N1");
@@ -91,7 +112,7 @@ export default function Home() {
   useEffect(() => {
     const saved = localStorage.getItem("cn12-fieldnote-draft");
     if (saved) {
-      try { const parsed = JSON.parse(saved); setForm(normalizeForm(parsed.form)); setRubric(parsed.rubric ?? defaultRubric); } catch { /* ignore malformed local draft */ }
+      try { const parsed = JSON.parse(saved); setForm(normalizeForm(parsed.form)); setRubric(normalizeRubric(parsed.rubric)); } catch { /* ignore malformed local draft */ }
     }
   }, []);
 
@@ -104,7 +125,7 @@ export default function Home() {
 
   useEffect(() => {
     const saved = localStorage.getItem("cn12-submissions");
-    if (saved) { try { const parsed = JSON.parse(saved); if (Array.isArray(parsed)) setSubmissions(parsed); } catch { /* ignore malformed history */ } }
+    if (saved) { try { const parsed = JSON.parse(saved); if (Array.isArray(parsed)) setSubmissions(parsed.map(normalizeSubmission).filter((item): item is SubmissionRecord => Boolean(item)).slice(0, 200)); } catch { /* ignore malformed history */ } }
   }, []);
 
   useEffect(() => { localStorage.setItem("cn12-submissions", JSON.stringify(submissions)); }, [submissions]);
@@ -115,7 +136,7 @@ export default function Home() {
   const updateForm = (key: keyof typeof form, value: string) => setForm((current) => ({ ...current, [key]: value }));
 
   const clearDraft = () => {
-    if (!window.confirm("Xóa toàn bộ bản nháp và lựa chọn rubric hiện tại?")) return;
+    if (!window.confirm("Xóa toàn bộ bản nháp và lựa chọn rubric hiện tại? Dữ liệu đã gửi trong Google Sheet không bị xóa.")) return;
     localStorage.removeItem("cn12-fieldnote-draft");
     setForm(emptyForm); setRubric(defaultRubric); setSubmitted(false);
     toast.success("Đã xóa bản nháp cục bộ.");
@@ -130,8 +151,12 @@ export default function Home() {
 
   const submit = async () => {
     if (isSubmitting) return;
+    const reportMatchesGroup = selected.reports.some((report) => report.code === form.reportCode);
     if (!form.student || !form.className || !form.classCode || !form.groupCode || !form.reportCode || !form.reportTitle || !form.reportLink || answered < criteria.length) {
       toast.error("Vui lòng hoàn thiện họ tên, lớp, mã lớp, mã nhóm, mã báo cáo, đường dẫn và đủ 5 tiêu chí."); return;
+    }
+    if (!reportMatchesGroup || !isSafeReportLink(form.reportLink)) {
+      toast.error("Mã báo cáo không khớp nhóm hoặc link chưa phải địa chỉ Google Drive/Slides HTTPS hợp lệ."); return;
     }
     setIsSubmitting(true);
     const body = new URLSearchParams({
@@ -175,7 +200,7 @@ export default function Home() {
   const downloadCsv = () => {
     if (!ensureExportable()) return;
     const headers = Object.keys(exportRows[0]);
-    const csv = [headers, ...exportRows.map((row) => headers.map((header) => row[header as keyof typeof row]))]
+    const csv = [headers, ...exportRows.map((row) => headers.map((header) => spreadsheetSafe(row[header as keyof typeof row])))]
       .map((row) => row.map((value) => `"${String(value ?? "").replace(/"/g, '""')}"`).join(","))
       .join("\\n");
     const blob = new Blob(["\\ufeff" + csv], { type: "text/csv;charset=utf-8" });
@@ -184,7 +209,7 @@ export default function Home() {
   };
   const downloadExcel = () => {
     if (!ensureExportable()) return;
-    const worksheet = XLSX.utils.json_to_sheet(exportRows);
+    const worksheet = XLSX.utils.json_to_sheet(exportRows.map((row) => Object.fromEntries(Object.entries(row).map(([key, value]) => [key, spreadsheetSafe(value)]))));
     worksheet["!cols"] = [{ wch: 12 }, { wch: 12 }, { wch: 22 }, { wch: 10 }, { wch: 38 }, { wch: 14 }, { wch: 42 }, { wch: 58 }, { wch: 16 }, { wch: 22 }];
     const workbook = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(workbook, worksheet, "Bang diem");
     XLSX.writeFile(workbook, `bang-diem-${new Date().toISOString().slice(0, 10)}.xlsx`);
@@ -195,7 +220,7 @@ export default function Home() {
     <header className="sticky top-0 z-30 border-b border-[#d9d3c6] bg-[#f5f1e8]/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-4 lg:px-10">
         <a href="#top" className="flex items-center gap-3"><img src={`${ASSET_BASE}/fieldnote-logo.png`} className="h-11 w-11 rounded-full" alt="Biểu tượng hạt giống dữ liệu" /><span><span className="block font-serif text-lg font-semibold tracking-tight">DẤU VẾT TRI THỨC / CÔNG NGHỆ 12</span><span className="block text-[10px] font-semibold uppercase tracking-[0.22em] text-[#6c8578]">Báo cáo số · Tự đánh giá</span></span></a>
-        <nav className={`${mobileNav ? "flex" : "hidden"} absolute left-0 top-[74px] w-full flex-col gap-4 border-b border-[#d9d3c6] bg-[#f5f1e8] px-5 py-5 text-sm font-semibold lg:static lg:flex lg:w-auto lg:flex-row lg:border-0 lg:bg-transparent lg:p-0`}><a href="#quy-trinh">Quy trình</a><a href="#chu-de">8 nhóm chủ đề</a><a href="#rubric">Tự chấm</a><a href="#thong-ke">Thống kê</a><a href="#huong-dan" className="text-[#1f6b57]">Hướng dẫn giáo viên</a><a href="#kiem-chung">Kiểm chứng AI</a></nav>
+        <nav className={`${mobileNav ? "flex" : "hidden"} absolute left-0 top-[74px] w-full flex-col gap-4 border-b border-[#d9d3c6] bg-[#f5f1e8] px-5 py-5 text-sm font-semibold lg:static lg:flex lg:w-auto lg:flex-row lg:border-0 lg:bg-transparent lg:p-0`}><a href="#quy-trinh">Quy trình</a><a href="#chu-de">8 nhóm chủ đề</a><a href="#rubric">Tự chấm</a><a href="#thong-ke">Thống kê</a><a href="#huong-dan" className="text-[#1f6b57]">Hướng dẫn giáo viên</a><a href="#bao-mat">Bảo vệ dữ liệu</a><a href="#kiem-chung">Kiểm chứng AI</a></nav>
         <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setMobileNav(!mobileNav)} aria-label="Mở menu"><Menu size={20} /></Button>
       </div>
       <div className="border-t border-[#e3ded2] bg-[#f0ece2]/75 px-5 py-3 lg:px-10">
@@ -232,6 +257,7 @@ export default function Home() {
       <section id="thong-ke" className="border-t border-[#d9d3c6] bg-[#e8efe9] px-5 py-16 lg:px-10 lg:py-24"><div className="mx-auto max-w-[1440px]"><div className="flex flex-wrap items-end justify-between gap-6"><div><p className="eyebrow">Evidence ledger / local view</p><h2 className="section-title">Thống kê theo mã lớp, nhóm và báo cáo.</h2><p className="mt-4 max-w-2xl leading-7 text-[#5b7067]">Bảng này tổng hợp các bản ghi đã gửi từ trình duyệt hiện tại. Google Sheet vẫn là nguồn dữ liệu chính thức để giáo viên đối chiếu toàn lớp; trạng thái “Chưa nộp” chỉ có nghĩa là chưa có bản ghi cục bộ phù hợp bộ lọc.</p></div><BarChart3 className="text-[#1f6b57]" size={38} /></div><div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"><div className="rounded-2xl border border-[#cbd8ce] bg-[#f5f1e8] p-5"><span className="ledger-tag">records</span><strong className="mt-3 block font-serif text-4xl">{filteredSubmissions.length}</strong><span className="text-sm text-[#6c7c73]">bản ghi đang lọc</span></div><div className="rounded-2xl border border-[#cbd8ce] bg-[#f5f1e8] p-5"><span className="ledger-tag">average</span><strong className="mt-3 block font-serif text-4xl">{averageScore}<small className="ml-1 font-mono text-base">/100</small></strong><span className="text-sm text-[#6c7c73]">điểm trung bình</span></div><div className="rounded-2xl border border-[#cbd8ce] bg-[#f5f1e8] p-5"><span className="ledger-tag">highest</span><strong className="mt-3 block font-serif text-4xl">{highestScore}<small className="ml-1 font-mono text-base">/100</small></strong><span className="text-sm text-[#6c7c73]">điểm cao nhất</span></div><div className="rounded-2xl border border-[#cbd8ce] bg-[#f5f1e8] p-5"><span className="ledger-tag">source</span><strong className="mt-3 block font-serif text-2xl">Trình duyệt</strong><span className="text-sm text-[#6c7c73]">không thay thế Google Sheet</span></div></div><div className="mt-8 flex flex-wrap gap-3"><select value={statsClass} onChange={(e) => setStatsClass(e.target.value)} className="h-11 rounded-full border border-[#b9c8bc] bg-[#f5f1e8] px-4 text-sm font-semibold text-[#17352d]"><option value="all">Tất cả mã lớp</option>{classOptions.map((value) => <option key={value} value={value}>{value}</option>)}</select><select value={statsGroup} onChange={(e) => setStatsGroup(e.target.value)} className="h-11 rounded-full border border-[#b9c8bc] bg-[#f5f1e8] px-4 text-sm font-semibold text-[#17352d]"><option value="all">Tất cả mã nhóm</option>{groupOptions.map((value) => <option key={value} value={value}>{value}</option>)}</select><select value={statsReport} onChange={(e) => setStatsReport(e.target.value)} className="h-11 rounded-full border border-[#b9c8bc] bg-[#f5f1e8] px-4 text-sm font-semibold text-[#17352d]"><option value="all">Tất cả mã báo cáo</option>{reportOptions.map((value) => <option key={value} value={value}>{value}</option>)}</select><button type="button" onClick={() => { setStatsClass("all"); setStatsGroup("all"); setStatsReport("all"); }} className="inline-flex h-11 items-center gap-2 rounded-full border border-[#b9c8bc] px-4 text-sm font-semibold text-[#1f6b57]"><RefreshCw size={15} />Đặt lại bộ lọc</button><button type="button" onClick={downloadCsv} className="inline-flex h-11 items-center gap-2 rounded-full bg-[#1f6b57] px-4 text-sm font-semibold text-white shadow-sm"><Download size={15} />CSV</button><button type="button" onClick={downloadExcel} className="inline-flex h-11 items-center gap-2 rounded-full bg-[#e7bc65] px-4 text-sm font-semibold text-[#17352d] shadow-sm"><Download size={15} />Excel</button></div><div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-4">{progressRows.filter((row) => statsReport === "all" || row.code === statsReport).map((row) => <article key={row.code} className="rounded-2xl border border-[#cbd8ce] bg-[#f5f1e8] p-4"><div className="flex items-center justify-between gap-2"><span className="font-mono text-xs font-bold text-[#1f6b57]">{row.code}</span><span className={`rounded-full px-2 py-1 text-[11px] font-bold ${row.status === "Đã nộp" ? "bg-[#d9eee0] text-[#1f6b57]" : "bg-[#fff1cc] text-[#896a24]"}`}>{row.status}</span></div><h3 className="mt-3 text-sm font-semibold text-[#315d4d]">{row.title}</h3><p className="mt-1 text-xs text-[#74857b]">{row.groupId} · {row.scope}</p><p className="mt-3 text-xs text-[#63766c]">{row.latestAt ? `Nộp gần nhất: ${new Date(row.latestAt).toLocaleString("vi-VN")}` : "Chưa có bản ghi phù hợp"}</p></article>)}</div><div className="mt-5 overflow-x-auto rounded-2xl border border-[#cbd8ce] bg-[#f5f1e8]"><table className="w-full min-w-[900px] text-left text-sm"><thead className="border-b border-[#d9d3c6] text-xs uppercase tracking-[0.12em] text-[#728279]"><tr><th className="px-5 py-4">Mã lớp</th><th className="px-5 py-4">Mã nhóm</th><th className="px-5 py-4">Mã báo cáo</th><th className="px-5 py-4">Tên học sinh</th><th className="px-5 py-4">Báo cáo</th><th className="px-5 py-4">Điểm</th><th className="px-5 py-4">Ngày nộp</th><th className="px-5 py-4">Trạng thái</th></tr></thead><tbody>{filteredSubmissions.length ? filteredSubmissions.map((item) => <tr key={`${item.submittedAt}-${item.student}`} className="border-b border-[#e4dfd4] last:border-0"><td className="px-5 py-4 font-mono font-semibold text-[#1f6b57]">{item.classCode}</td><td className="px-5 py-4 font-mono">{item.groupCode}</td><td className="px-5 py-4 font-mono text-xs">{getReportCode(item)}</td><td className="px-5 py-4">{item.student}</td><td className="max-w-[280px] truncate px-5 py-4">{item.reportTitle}</td><td className="px-5 py-4 font-mono font-bold">{item.score}/100</td><td className="px-5 py-4 text-xs text-[#718078]">{new Date(item.submittedAt).toLocaleString("vi-VN")}</td><td className="px-5 py-4"><span className="rounded-full bg-[#d9eee0] px-2 py-1 text-xs font-bold text-[#1f6b57]">Đã nộp</span></td></tr>) : <tr><td colSpan={8} className="px-5 py-10 text-center text-[#718078]">Chưa có bản ghi cục bộ phù hợp. Hãy gửi một bài hoặc đổi bộ lọc.</td></tr>}</tbody></table></div></div></section>
 
       <section id="huong-dan" className="mx-auto max-w-[1440px] px-5 py-12 lg:px-10"><div className="flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-[#cbd8ce] bg-[#e4efe8] p-6"><div><p className="eyebrow">Dành cho giáo viên</p><p className="mt-2 text-sm text-[#51675b]">Sau khi cấu hình Google Form, mở Google Sheet để xem toàn bộ bản ghi. Không cần server, token hoặc nơi lưu file. Website chỉ là giao diện nộp bài; Google Sheet mới là nguồn chính thức và giáo viên cần đối chiếu link, nguồn trích dẫn, sản phẩm và phần thuyết trình trước khi chốt điểm.</p></div><a href="https://docs.google.com/forms/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#1f6b57]">Mở Google Forms <Link2 size={15} /></a></div></section>
+      <section id="bao-mat" className="border-y border-[#d9d3c6] bg-[#f0ece2] px-5 py-12 lg:px-10"><div className="mx-auto max-w-[1440px]"><div className="max-w-2xl"><p className="eyebrow">Bảo vệ dữ liệu · giới hạn minh bạch</p><h2 className="section-title">Giữ bản ghi đúng, không tạo cảm giác bảo mật giả.</h2><p className="mt-4 leading-7 text-[#5b7067]">Website kiểm tra cấu trúc bản nháp, mã nhóm, mã báo cáo và link Google Drive/Slides trước khi gửi. Bản ghi trong giao diện chỉ là lịch sử cục bộ để theo dõi; Google Sheet của giáo viên mới là nguồn chính thức.</p></div><div className="mt-7 grid gap-4 md:grid-cols-3"><article className="rounded-2xl border border-[#d8cba9] bg-[#fff8e6] p-5"><p className="ledger-tag">01 · Nguồn chính thức</p><h3 className="mt-3 font-serif text-xl text-[#315d4d]">Google Sheet giữ bản ghi lớp</h3><p className="mt-2 text-sm leading-6 text-[#6c6045]">Không xóa hoặc sửa dữ liệu đã gửi trong website sẽ xóa bản ghi ở Google Sheet. Giáo viên cần giới hạn quyền chỉnh sửa Sheet.</p></article><article className="rounded-2xl border border-[#cbd8ce] bg-[#e4efe8] p-5"><p className="ledger-tag">02 · Chống sai cấu trúc</p><h3 className="mt-3 font-serif text-xl text-[#315d4d]">Kiểm tra trước khi xuất</h3><p className="mt-2 text-sm leading-6 text-[#51675b]">Dữ liệu localStorage sai cấu trúc sẽ bị loại khỏi thống kê; CSV/Excel thêm dấu bảo vệ cho ô bắt đầu bằng ký tự công thức để giảm rủi ro khi mở bằng bảng tính.</p></article><article className="rounded-2xl border border-[#cbd8ce] bg-[#e8efe9] p-5"><p className="ledger-tag">03 · Giới hạn cần biết</p><h3 className="mt-3 font-serif text-xl text-[#315d4d]">Frontend không phải két sắt</h3><p className="mt-2 text-sm leading-6 text-[#51675b]">Người dùng vẫn có thể sửa mã JavaScript hoặc localStorage bằng công cụ trình duyệt. Muốn chống giả mạo ở cấp hệ thống, cần xác thực và backend/Google Workspace do nhà trường quản trị.</p></article></div></div></section>
     </main>
     <footer className="border-t border-[#d9d3c6] bg-[#f0ece2] px-5 py-8 lg:px-10"><div className="mx-auto flex max-w-[1440px] flex-col gap-6 md:flex-row md:items-center md:justify-between"><div className="flex items-center gap-3"><div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#a9c4b5] bg-[#e4efe8] p-2"><img src={COFFEE_MARK} alt="Cây cà phê có quả chín" className="h-full w-full object-contain" /></div><div><p className="font-serif text-lg text-[#315d4d]">{TEACHER_PROFILE.name}</p><p className="text-xs text-[#748279]">{TEACHER_PROFILE.role}</p><p className="mt-1 text-xs text-[#87938a]">{TEACHER_PROFILE.school}</p></div></div><div className="max-w-md text-left text-xs leading-6 text-[#7c8b83] md:text-right"><p className="font-semibold text-[#315d4d]">DẤU VẾT TRI THỨC / CÔNG NGHỆ 12</p><p>Công nghệ 12 Lâm nghiệp – Thủy sản · Dữ liệu tự chấm là phản tư tham khảo · AI hỗ trợ, con người kiểm chứng.</p><p className="mt-1">{TEACHER_PROFILE.motto}</p></div></div></footer>
   </div>;
