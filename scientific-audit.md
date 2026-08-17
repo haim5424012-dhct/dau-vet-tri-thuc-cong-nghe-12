@@ -99,3 +99,8 @@ Bản kiểm tra cuối xác nhận header desktop hiển thị đủ tên giáo
 ## Kiểm thử nút Dán link mẫu
 
 Đã bổ sung nút “Dán link mẫu” cạnh ô Google Drive/Slides. Nút điền một URL minh họa HTTPS hợp lệ, hiển thị cảnh báo rõ rằng đây không phải link nộp bài, và trạng thái link mẫu được chặn khi gửi cho đến khi học sinh thay link thật. Kiểm thử desktop/mobile cho thấy nút và cảnh báo không gây tràn bố cục.
+
+
+## Kiểm thử hướng dẫn chia sẻ Google Drive
+
+Đã thêm nút “Mở hướng dẫn chia sẻ Drive” liên kết tới trang trợ giúp chính thức của Google bằng tiếng Việt. Khu vực nộp bài đồng thời nhắc học sinh chọn “Bất kỳ ai có liên kết”, quyền “Người xem” và kiểm tra ở cửa sổ ẩn danh. Liên kết mở tab mới, không làm mất dữ liệu biểu mẫu. Kiểm thử desktop/mobile không ghi nhận tràn bố cục.
