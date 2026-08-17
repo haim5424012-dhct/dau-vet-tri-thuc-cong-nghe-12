@@ -1,7 +1,8 @@
-# Checklist — Kiểm tra bản ghi, mẫu 8–9 điểm và trạng thái gửi
+# Checklist — Thống kê, mẫu Nhóm 2 và reset form
 
-- [x] Mở phần Câu trả lời/Google Sheet liên kết và xác nhận bản ghi mẫu 48/100.
-- [x] Tạo báo cáo mẫu Nhóm 1 ở mức 8–9 điểm và đưa vào Google Docs.
-- [x] Nhập link báo cáo mới; website tính thực tế 82/100 với rubric 4/4, 3/4, 3/4, 4/4, 3/4.
-- [x] Làm nổi bật loading và thông báo thành công trên website.
-- [x] Chạy build, kiểm thử gửi, xác nhận Form có 4 câu trả lời và chuẩn bị lưu checkpoint mới.
+- [x] Thêm trang thống kê tổng hợp theo mã lớp và mã nhóm.
+- [x] Xác định nguồn dữ liệu thống kê là bản ghi cục bộ; hiển thị rõ Google Sheet là nguồn chính thức.
+- [x] Tạo báo cáo mẫu Nhóm 2 ở mức khoảng 6–7 điểm và đưa vào Google Docs.
+- [x] Thêm nút xóa bản nháp cục bộ có xác nhận.
+- [x] Tự reset form, rubric và trạng thái sau khi gửi thành công.
+- [x] Chạy kiểm thử, build và chuẩn bị lưu checkpoint mới.

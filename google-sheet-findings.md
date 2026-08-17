@@ -10,3 +10,7 @@ Website đã nhận link Google Docs mẫu mức 8–9 điểm và thông tin L�
 Bản báo cáo mẫu mức 8–9 điểm đã được gửi qua website. Trạng thái quan sát được: “Đang gửi bản ghi…” với hướng dẫn không đóng trang; sau đó chuyển thành “Đã gửi thành công” với thông báo chi tiết. Website hiển thị tổng điểm 82/100, tương đương 8,2/10, khớp công thức trọng số thực tế.
 
 Google Form hiện có 4 câu trả lời. Bản ghi mới của Lê Minh Khoa, lớp/mã lớp 12A1, mã nhóm N1, link Google Docs 11LsSSZ... đã xuất hiện. Trường Điểm tự chấm có thêm giá trị 82/100; Chi tiết rubric có bản ghi 4/4, 3/4, 3/4, 4/4, 3/4. Như vậy Google Form đã ghi nhận đúng bản mẫu mức 8–9 điểm.
+
+Google Docs mẫu Nhóm 2 đã được tạo và điền nội dung: https://docs.google.com/document/d/1l9GicMUeoqG508RHKjVNkyn3sBhnl5BAotyhcYz5ooM/edit?tab=t.0. Báo cáo dự kiến ở mức 63/100, tương đương 6,3/10.
+
+Kiểm thử Nhóm 2 đã gửi thành công qua website với mã lớp 12A1, mã nhóm N2, link Google Docs https://docs.google.com/document/d/1l9GicMUeoqG508RHKjVNkyn3sBhnl5BAotyhcYz5ooM/edit?tab=t.0. Rubric thực tế 3/4, 3/4, 3/4, 3/4, 2/4 cho điểm 62/100 = 6,2/10. Sau gửi, form reset về giá trị rỗng; trang thống kê cục bộ ghi 1 bản ghi, trung bình 62 và cao nhất 62.
