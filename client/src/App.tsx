@@ -13,7 +13,8 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/404" component={NotFound} />
-        <Route component={NotFound} />
+        {/* One-page GitHub Pages app: hash links such as #kiem-chung must stay on Home. */}
+        <Route component={Home} />
       </Switch>
     </WouterRouter>
   );
