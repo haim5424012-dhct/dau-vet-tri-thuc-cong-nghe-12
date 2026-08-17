@@ -95,3 +95,7 @@ Bản kiểm tra cuối xác nhận header desktop hiển thị đủ tên giáo
 ## Kiểm thử thông báo lỗi nhập liệu
 
 Đã bổ sung thông báo lỗi theo từng trường cho mã nhóm, mã báo cáo và link Google Drive/Slides. Mã nhóm tự chuẩn hóa chữ hoa và loại khoảng trắng; lỗi có `aria-invalid`, `aria-describedby`, màu viền rõ và `role=alert`. Khi bấm gửi, hệ thống đánh dấu các mục sai và đưa focus tới lỗi đầu tiên. Kiểm thử full-page desktop/mobile không ghi nhận tràn bố cục.
+
+## Kiểm thử nút Dán link mẫu
+
+Đã bổ sung nút “Dán link mẫu” cạnh ô Google Drive/Slides. Nút điền một URL minh họa HTTPS hợp lệ, hiển thị cảnh báo rõ rằng đây không phải link nộp bài, và trạng thái link mẫu được chặn khi gửi cho đến khi học sinh thay link thật. Kiểm thử desktop/mobile cho thấy nút và cảnh báo không gây tràn bố cục.
