@@ -9,15 +9,15 @@ import { toast } from "sonner";
 import { ArrowDown, ArrowRight, Check, ClipboardList, ExternalLink, FileText, Leaf, Link2, Menu, Send, Sprout, Waves, X } from "lucide-react";
 
 const FORM_CONFIG = {
-  actionUrl: "",
+  actionUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfr6aguXg_kGhF_IM0s-mTWCrN0u0lK2eyPIVt7pfKhBnuAxw/formResponse",
   entries: {
-    student: "entry.0000000000",
-    className: "entry.0000000001",
-    group: "entry.0000000002",
-    reportTitle: "entry.0000000003",
-    reportLink: "entry.0000000004",
-    score: "entry.0000000005",
-    rubric: "entry.0000000006",
+    student: "entry.299711186",
+    className: "entry.417395979",
+    group: "entry.1098548488",
+    reportTitle: "entry.287486772",
+    reportLink: "entry.1136418837",
+    score: "entry.2068320805",
+    rubric: "entry.764422736",
   },
 };
 

@@ -1,7 +1,8 @@
-# Checklist — Kiểm thử báo cáo mẫu Nhóm 1
+# Checklist — Kết nối Google Form thật
 
-- [x] Soạn nội dung báo cáo mẫu bám YCCĐ và Khung 3439 của Nhóm 1.
-- [x] Chọn 5 mức rubric và tính điểm độc lập.
-- [x] Đối chiếu dữ liệu mẫu với công thức điểm của website bằng bài test độc lập.
-- [x] Kiểm tra luồng gửi dự phòng vì Google Form chưa có action URL thật.
-- [x] Lưu kết quả kiểm thử và báo cáo cho người dùng.
+- [x] Hoàn thiện cấu trúc 7 trường trong Google Form.
+- [x] Xác nhận URL `formResponse` và 7 entry ID từ HTML preview.
+- [x] Cập nhật `FORM_CONFIG` trong website.
+- [x] Chạy kiểm tra TypeScript và build production.
+- [x] Gửi một bản dữ liệu mẫu Nhóm 1 vào Form; endpoint trả HTTP 200. Cần đối chiếu Sheet trực tiếp nếu muốn xác nhận bản ghi.
+- [ ] Lưu checkpoint phiên bản kết nối.
