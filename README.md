@@ -14,6 +14,12 @@ Website hỗ trợ học sinh chọn một trong tám nhóm chủ đề, đọc 
 | Nộp bài | Nhập mã lớp, mã nhóm, tên báo cáo và link Drive/Slides; gửi qua Form ẩn |
 | Thống kê cục bộ | Lọc và xuất CSV/Excel các bản ghi của trình duyệt hiện tại |
 
+## Cấu trúc nhóm hiện tại
+
+Phiên bản mới không dùng Bài 1–2 “Giới thiệu chung về lâm nghiệp” làm nhóm lựa chọn. Tám nhóm được tổ chức thành hai cụm nội dung để học sinh làm việc đa dạng hơn nhưng vẫn bám mục lục sách. **Cụm 1 — Lâm nghiệp** gồm N1 Bài 3, N2 Bài 4, N3 Bài 5 và N4 Bài 6–7. **Cụm 2 — Thủy sản** gồm N5 Bài 8–12, N6 Bài 13–15, N7 Bài 16–18 và N8 Bài 19–27. Đây là cách tổ chức nhóm của dự án, không gọi là Chương I/Chương II của sách giáo khoa để tránh nhầm lẫn với Chương I “Giới thiệu chung về lâm nghiệp” và Chương II “Trồng và chăm sóc rừng”.
+
+Mỗi nhóm có trọng tâm riêng: kiến thức nền và trồng rừng, sinh trưởng cây rừng, kĩ thuật chăm sóc, bảo vệ–khai thác bền vững; sau đó là môi trường nuôi, giống, thức ăn, nuôi–bệnh–nguồn lợi thủy sản. Liên hệ AI là phần mở rộng có điều kiện, không thay thế yêu cầu cần đạt của môn học.
+
 ## Công nghệ và dữ liệu
 
 Dự án dùng React 19, Vite, Tailwind CSS 4, Wouter, Lucide React, Sonner và XLSX. Ảnh minh họa đã được tối ưu và đặt trong `client/public/assets` để artifact GitHub Pages không phụ thuộc proxy phát triển. Google Sheet là nguồn lưu trữ tập trung; `localStorage` chỉ dùng cho bản nháp và lịch sử cục bộ.

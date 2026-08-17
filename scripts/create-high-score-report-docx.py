@@ -19,7 +19,7 @@ p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 r = p.add_run('BÁO CÁO MẪU NHÓM 1 — MỨC THAM KHẢO 8–9 ĐIỂM'); r.bold = True; r.font.size = Pt(14)
 
 info = doc.add_table(rows=4, cols=2); info.alignment = WD_TABLE_ALIGNMENT.CENTER; info.style = 'Table Grid'
-for row, (a,b) in zip(info.rows, [('Chủ đề','Ứng dụng AI trong phát hiện suy thoái rừng'),('Nhóm','N1 — Giới thiệu chung về lâm nghiệp'),('Lớp / mã lớp','12A1 / 12A1'),('Mã nhóm','N1')]):
+for row, (a,b) in zip(info.rows, [('Chủ đề','Theo dõi nhiệm vụ trồng và chăm sóc rừng bằng dữ liệu hiện trường'),('Nhóm','N1 — Vai trò và nhiệm vụ trồng rừng'),('Lớp / mã lớp','12A1 / 12A1'),('Mã nhóm','N1')]):
     row.cells[0].text = a; row.cells[1].text = b
 
 doc.add_heading('1. Vấn đề và mục tiêu', level=1)

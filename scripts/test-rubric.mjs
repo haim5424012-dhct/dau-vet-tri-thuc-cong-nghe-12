@@ -15,8 +15,8 @@ if (Math.abs(score - expected) > 0.000001 || rounded !== 77) {
 const payload = {
   student: 'Nguyễn Minh Anh',
   className: '12A1',
-  group: 'N1 — Giới thiệu chung về lâm nghiệp',
-  reportTitle: 'Ứng dụng AI trong phát hiện suy thoái và bảo vệ rừng',
+  group: "N1 — Vai trò và nhiệm vụ trồng rừng",
+  reportTitle: 'Theo dõi nhiệm vụ trồng và chăm sóc rừng bằng dữ liệu hiện trường',
   reportLink: 'https://docs.google.com/presentation/d/REPORT-MAU-N1/view',
   score: `${rounded}/100`,
   rubric: 'knowledge: 4/4 | evidence: 3/4 | presentation: 3/4 | slides: 3/4 | teamwork: 3/4',

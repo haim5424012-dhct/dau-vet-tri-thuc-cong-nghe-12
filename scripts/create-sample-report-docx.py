@@ -30,8 +30,8 @@ info = doc.add_table(rows=4, cols=2)
 info.alignment = WD_TABLE_ALIGNMENT.CENTER
 info.style = 'Table Grid'
 rows = [
-    ('Chủ đề', 'Ứng dụng AI trong phát hiện suy thoái rừng'),
-    ('Nhóm', 'N1 — Giới thiệu chung về lâm nghiệp'),
+    ('Chủ đề', 'Theo dõi nhiệm vụ trồng và chăm sóc rừng bằng dữ liệu hiện trường'),
+    ('Nhóm', 'N1 — Vai trò và nhiệm vụ trồng rừng'),
     ('Lớp / mã lớp', '12A1 / 12A1'),
     ('Mã nhóm', 'N1'),
 ]

@@ -62,3 +62,13 @@ URL gốc có query cache-bust hiển thị đúng Home, nhưng URL trực tiế
 ## Kiểm thử sau render Home không điều kiện
 
 Sau deploy run 32019724677 thành công, URL gốc có query vẫn hiển thị Home nhưng browser mở trực tiếp `/#kiem-chung` vẫn nhận nội dung NotFound. Vì code mới render `Home` không điều kiện trong WouterRouter, cần điều tra khả năng browser/proxy đang giữ bundle cũ hoặc GitHub Pages có phân biệt URL fragment ở lớp khác. Không kết luận sửa lỗi hoàn tất cho đến khi kiểm tra bundle đang phục vụ và trạng thái cache/CDN.
+
+
+## Kiểm thử giao diện sau khi thêm 16 báo cáo
+
+Ngày 17/08/2026, giao diện desktop 1280×720 và mobile 375×812 hiển thị ổn định ở trang chủ. Header, hero, ảnh minh họa và điều hướng không bị tràn; danh sách hai báo cáo được tích hợp trong thẻ nhóm và biểu mẫu có trường chọn mã báo cáo học kỳ. Cần kiểm tra tiếp tại vị trí cuộn `#chu-de` và `#gui-bai` sau build production để xác nhận đầy đủ nội dung trên màn hình nhỏ.
+
+
+## Kiểm thử full-page sau khi tích hợp ma trận học kỳ
+
+Ảnh kiểm thử full-page desktop và mobile cho thấy luồng trang vẫn liên tục từ quy trình, bản đồ 8 nhóm, kiểm chứng AI, rubric, biểu mẫu đến thống kê. Trên mobile, nội dung xếp một cột; thẻ báo cáo, trường mã báo cáo học kỳ và nút gửi không bị cắt ngang. Trên desktop, thẻ nhóm hiển thị đồng thời hai báo cáo và phần nộp bài có lựa chọn mã báo cáo.
