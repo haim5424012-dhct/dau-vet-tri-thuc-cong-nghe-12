@@ -1,9 +1,9 @@
-# Checklist — Audit khoa học và hoàn thiện GitHub Pages
+# Checklist — GitHub repository và GitHub Pages
 
-- [x] Kiểm kê toàn bộ nội dung 8 nhóm, rubric, luồng nộp và tài liệu hiện có.
-- [x] Đối chiếu thuật ngữ, yêu cầu cần đạt, Khung 3439/NLS và nội dung lâm nghiệp–thủy sản với nguồn chính thức.
-- [x] Ghi rõ nội dung thiếu, nội dung cần giáo viên xác nhận và đề xuất sửa có truy vết.
-- [x] Bổ sung nội dung khoa học được xác nhận, không bịa dữ liệu hoặc minh chứng học sinh.
-- [x] Kiểm tra GitHub Pages: base path, asset URL, workflow, build/check/test và giới hạn localStorage/no-cors.
-- [x] Hoàn thiện README, hướng dẫn học sinh/giáo viên và gói chia sẻ GitHub.
-- [x] Chạy kiểm thử cuối; chuẩn bị lưu checkpoint mới.
+- [ ] Kiểm tra tài khoản GitHub, remote và trạng thái mã nguồn hiện tại.
+- [ ] Chuẩn bị commit sạch, loại trừ node_modules, dist, log và cache.
+- [ ] Tạo repository GitHub riêng tư với tên dễ chia sẻ.
+- [ ] Đẩy mã nguồn và workflow GitHub Actions lên nhánh main.
+- [ ] Kiểm tra workflow build, test, upload artifact và deploy Pages.
+- [ ] Xác nhận URL Pages hoặc ghi rõ bước cần người dùng bật thủ công.
+- [ ] Lưu checkpoint và bàn giao repository cho người dùng.
