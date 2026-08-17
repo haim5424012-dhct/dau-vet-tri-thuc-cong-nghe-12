@@ -2,6 +2,8 @@ const actionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfr6aguXg_kGhF_IM0s-
 const body = new URLSearchParams({
   'entry.299711186': 'Nguyễn Minh Anh',
   'entry.417395979': '12A1',
+  'entry.1285290589': '12A1',
+  'entry.902018661': 'N1',
   'entry.1098548488': 'N1 — Giới thiệu chung về lâm nghiệp',
   'entry.287486772': 'Ứng dụng AI trong phát hiện suy thoái và bảo vệ rừng',
   'entry.1136418837': 'https://docs.google.com/presentation/d/REPORT-MAU-N1/view',
@@ -10,5 +12,11 @@ const body = new URLSearchParams({
 });
 
 const response = await fetch(actionUrl, { method: 'POST', body, redirect: 'manual' });
-console.log(JSON.stringify({ status: response.status, redirected: response.redirected, location: response.headers.get('location') }, null, 2));
+console.log(JSON.stringify({
+  status: response.status,
+  redirected: response.redirected,
+  location: response.headers.get('location'),
+  submittedFields: 9,
+  included: ['mã lớp', 'mã nhóm'],
+}, null, 2));
 if (![200, 302].includes(response.status)) process.exitCode = 1;
