@@ -1,8 +1,8 @@
 # Checklist — Hướng dẫn chia sẻ Google Drive
 
-- [ ] Kiểm tra tài liệu hướng dẫn chia sẻ Drive hiện có.
-- [ ] Thêm nút “Mở hướng dẫn chia sẻ Drive” ở khu vực nộp bài.
-- [ ] Cung cấp các bước cấp quyền Người xem và kiểm tra bằng cửa sổ ẩn danh.
-- [ ] Liên kết không gây mất dữ liệu biểu mẫu và mở an toàn ở tab mới.
-- [ ] Kiểm tra responsive, accessibility, check/test/build và deploy Pages.
-- [ ] Lưu checkpoint và bàn giao hướng dẫn cho học sinh.
+- [x] Kiểm tra và sử dụng trang trợ giúp Drive chính thức tiếng Việt.
+- [x] Thêm nút “Mở hướng dẫn chia sẻ Drive” ở khu vực nộp bài.
+- [x] Cung cấp các bước cấp quyền Người xem và kiểm tra bằng cửa sổ ẩn danh.
+- [x] Liên kết mở tab mới, không làm mất dữ liệu biểu mẫu.
+- [x] Kiểm tra responsive, accessibility, check/test/build; Pages HTTP 200 và trang Google Help HTTP 200.
+- [x] Chuẩn bị lưu checkpoint và bàn giao hướng dẫn cho học sinh.
