@@ -1,8 +1,9 @@
-# Checklist — Hướng dẫn chia sẻ Google Drive
+# Checklist — Kiểm tra quyền xem báo cáo
 
-- [x] Kiểm tra và sử dụng trang trợ giúp Drive chính thức tiếng Việt.
-- [x] Thêm nút “Mở hướng dẫn chia sẻ Drive” ở khu vực nộp bài.
-- [x] Cung cấp các bước cấp quyền Người xem và kiểm tra bằng cửa sổ ẩn danh.
-- [x] Liên kết mở tab mới, không làm mất dữ liệu biểu mẫu.
-- [x] Kiểm tra responsive, accessibility, check/test/build; Pages HTTP 200 và trang Google Help HTTP 200.
-- [x] Chuẩn bị lưu checkpoint và bàn giao hướng dẫn cho học sinh.
+- [ ] Kiểm tra ô link và validation Google Drive/Slides hiện tại.
+- [ ] Thêm nút “Kiểm tra quyền xem” cạnh ô link.
+- [ ] Mở link hợp lệ ở tab mới, không gửi dữ liệu và không làm mất bản nháp.
+- [ ] Hiển thị hướng dẫn nếu link yêu cầu đăng nhập hoặc báo không có quyền.
+- [ ] Chặn thao tác kiểm tra khi link rỗng hoặc sai định dạng.
+- [ ] Kiểm tra responsive, accessibility, check/test/build và deploy Pages.
+- [ ] Lưu checkpoint và bàn giao quy trình tự kiểm tra.

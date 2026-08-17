@@ -104,3 +104,8 @@ Bản kiểm tra cuối xác nhận header desktop hiển thị đủ tên giáo
 ## Kiểm thử hướng dẫn chia sẻ Google Drive
 
 Đã thêm nút “Mở hướng dẫn chia sẻ Drive” liên kết tới trang trợ giúp chính thức của Google bằng tiếng Việt. Khu vực nộp bài đồng thời nhắc học sinh chọn “Bất kỳ ai có liên kết”, quyền “Người xem” và kiểm tra ở cửa sổ ẩn danh. Liên kết mở tab mới, không làm mất dữ liệu biểu mẫu. Kiểm thử desktop/mobile không ghi nhận tràn bố cục.
+
+
+## Kiểm thử nút kiểm tra quyền xem
+
+Đã thêm nút “Kiểm tra quyền xem” cạnh ô link. Với link hợp lệ, nút mở báo cáo ở tab mới để học sinh kiểm tra như người xem; với link rỗng, sai định dạng hoặc link mẫu, hệ thống không mở và hướng dẫn sửa ngay tại biểu mẫu. Thao tác này không gửi dữ liệu và không xóa bản nháp. Kiểm thử desktop/mobile không ghi nhận tràn bố cục.
