@@ -9,6 +9,7 @@
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
+    "test": "node scripts/test-rubric.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

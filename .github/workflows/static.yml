@@ -35,6 +35,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Check
         run: pnpm check
+      - name: Test
+        run: pnpm test
       - name: Build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/

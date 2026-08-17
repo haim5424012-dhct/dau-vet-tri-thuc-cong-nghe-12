@@ -1,8 +1,9 @@
-# Checklist — Xuất bảng điểm CSV và Excel
+# Checklist — Audit khoa học và hoàn thiện GitHub Pages
 
-- [x] Xác định các cột dữ liệu và dùng đúng tập bản ghi đang lọc.
-- [x] Thêm nút xuất CSV có hỗ trợ tiếng Việt.
-- [x] Thêm nút xuất Excel (.xlsx) với tiêu đề và dữ liệu rõ ràng.
-- [x] Hiển thị trạng thái khi chưa có dữ liệu để xuất.
-- [x] Chạy build và kiểm tra nút tải CSV/Excel thực tế trên trang Thống kê.
-- [x] Chuẩn bị lưu checkpoint phiên bản mới.
+- [x] Kiểm kê toàn bộ nội dung 8 nhóm, rubric, luồng nộp và tài liệu hiện có.
+- [x] Đối chiếu thuật ngữ, yêu cầu cần đạt, Khung 3439/NLS và nội dung lâm nghiệp–thủy sản với nguồn chính thức.
+- [x] Ghi rõ nội dung thiếu, nội dung cần giáo viên xác nhận và đề xuất sửa có truy vết.
+- [x] Bổ sung nội dung khoa học được xác nhận, không bịa dữ liệu hoặc minh chứng học sinh.
+- [x] Kiểm tra GitHub Pages: base path, asset URL, workflow, build/check/test và giới hạn localStorage/no-cors.
+- [x] Hoàn thiện README, hướng dẫn học sinh/giáo viên và gói chia sẻ GitHub.
+- [x] Chạy kiểm thử cuối; chuẩn bị lưu checkpoint mới.
