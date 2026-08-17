@@ -72,3 +72,8 @@ Ngày 17/08/2026, giao diện desktop 1280×720 và mobile 375×812 hiển thị
 ## Kiểm thử full-page sau khi tích hợp ma trận học kỳ
 
 Ảnh kiểm thử full-page desktop và mobile cho thấy luồng trang vẫn liên tục từ quy trình, bản đồ 8 nhóm, kiểm chứng AI, rubric, biểu mẫu đến thống kê. Trên mobile, nội dung xếp một cột; thẻ báo cáo, trường mã báo cáo học kỳ và nút gửi không bị cắt ngang. Trên desktop, thẻ nhóm hiển thị đồng thời hai báo cáo và phần nộp bài có lựa chọn mã báo cáo.
+
+
+## Kiểm thử thống kê theo mã báo cáo và tiến độ
+
+Sau khi bổ sung bộ lọc mã báo cáo, giao diện desktop và mobile hiển thị ổn định. Khu vực Thống kê có ba bộ lọc mã lớp, mã nhóm và mã báo cáo; 16 thẻ tiến độ hiển thị mã, chủ đề, phạm vi, trạng thái “Đã nộp/Chưa nộp” và thời điểm nộp gần nhất. Bảng bản ghi hiển thị thêm mã báo cáo, ngày nộp và trạng thái. Trên mobile, các thẻ xếp một cột và bảng giữ cuộn ngang để không làm vỡ bố cục.
