@@ -24,28 +24,29 @@
 }
 
 :root {
-  --background: oklch(0.96 0.016 88);
-  --foreground: oklch(0.24 0.04 160);
-  --card: oklch(0.985 0.01 88);
-  --card-foreground: oklch(0.24 0.04 160);
-  --primary: oklch(0.43 0.09 160);
-  --primary-foreground: oklch(0.98 0.01 88);
-  --border: oklch(0.86 0.025 88);
-  --input: oklch(0.86 0.025 88);
-  --ring: oklch(0.43 0.09 160);
+  /* Field Journal palette: warm research paper, deep botanical ink, water-teal primary. */
+  --background: oklch(0.975 0.018 92);
+  --foreground: oklch(0.25 0.035 165);
+  --card: oklch(0.992 0.009 96);
+  --card-foreground: oklch(0.25 0.035 165);
+  --primary: oklch(0.43 0.105 166);
+  --primary-foreground: oklch(0.985 0.012 96);
+  --border: oklch(0.86 0.032 92);
+  --input: oklch(0.84 0.038 158);
+  --ring: oklch(0.43 0.105 166);
   --radius: 0.9rem;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background: #f5f1e8; font-family: 'Be Vietnam Pro', sans-serif; }
+body { margin: 0; min-width: 320px; background: #f8f4eb; font-family: 'Be Vietnam Pro', sans-serif; }
 button, input, textarea { font: inherit; }
 button:not(:disabled), a[href] { cursor: pointer; }
-::selection { background: #c8e4d0; color: #17352d; }
+::selection { background: #cfe8dc; color: #153c35; }
 
 .font-serif { font-family: 'Fraunces', serif; }
-.eyebrow { color: #6f887b; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
-.section-title { margin-top: 0.75rem; max-width: 760px; font-family: 'Fraunces', serif; font-size: clamp(2.25rem, 5vw, 4rem); line-height: 0.98; letter-spacing: -0.04em; color: #17352d; }
+.eyebrow { color: #2f806e; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.section-title { margin-top: 0.75rem; max-width: 760px; font-family: 'Fraunces', serif; font-size: clamp(2.25rem, 5vw, 4rem); line-height: 0.98; letter-spacing: -0.04em; color: #153c35; }
 
 @media (prefers-reduced-motion: no-preference) {
   a, button { transition: color 180ms cubic-bezier(.23,1,.32,1), background-color 180ms cubic-bezier(.23,1,.32,1), border-color 180ms cubic-bezier(.23,1,.32,1), transform 180ms cubic-bezier(.23,1,.32,1); }
@@ -58,20 +59,20 @@ button:not(:disabled), a[href] { cursor: pointer; }
 }
 
 /* Field-journal system: persistent index rail, pencil data path, specimen labels, evidence ledger. */
-.journal-rail { position: fixed; left: 1.2rem; top: 8.5rem; z-index: 20; display: none; width: 7.5rem; flex-direction: column; gap: .9rem; color: #6f887b; font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.journal-rail a { border-left: 1px solid #b9cdbd; padding-left: .65rem; line-height: 1.4; }
-.journal-rail a:hover { color: #1f6b57; border-left-color: #1f6b57; }
-.journal-rail-mark { color: #1f6b57; font-family: ui-monospace, monospace; font-size: .55rem; }
-.journal-rail-line { height: 5rem; width: 1px; margin-left: .15rem; background: repeating-linear-gradient(to bottom, #b9cdbd 0 4px, transparent 4px 8px); }
+.journal-rail { position: fixed; left: 1.2rem; top: 8.5rem; z-index: 20; display: none; width: 7.5rem; flex-direction: column; gap: .9rem; color: #598374; font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.journal-rail a { border-left: 1px solid #b6d1c4; padding-left: .65rem; line-height: 1.4; }
+.journal-rail a:hover { color: #0f6b5a; border-left-color: #0f6b5a; }
+.journal-rail-mark { color: #0f6b5a; font-family: ui-monospace, monospace; font-size: .55rem; }
+.journal-rail-line { height: 5rem; width: 1px; margin-left: .15rem; background: repeating-linear-gradient(to bottom, #b6d1c4 0 4px, transparent 4px 8px); }
 .pencil-path { position: relative; height: 1.2rem; margin: 0 2rem -.1rem; }
-.pencil-path::before { content: ''; position: absolute; left: 7%; right: 7%; top: .5rem; height: 2px; background: #7fae91; transform: rotate(-.4deg); opacity: .75; }
-.pencil-path::after { content: '→'; position: absolute; right: 5%; top: -.15rem; color: #1f6b57; font-size: 1.1rem; }
-.pencil-path span { position: absolute; left: 18%; top: .35rem; width: 3px; height: 3px; border-radius: 50%; background: #d7a84f; box-shadow: 14rem 2px 0 #d7a84f, 28rem -1px 0 #d7a84f; }
-.ledger-tag { position: absolute; right: 1.15rem; top: 1rem; color: #8b9d91; font-family: ui-monospace, monospace; font-size: .53rem; letter-spacing: .1em; text-transform: uppercase; }
-.ledger-tag-light { position: static; display: inline-block; color: #b9d9c2; margin-bottom: 1rem; }
-.field-caption { display: block; margin-bottom: .45rem; color: #8b9d91; font-family: ui-monospace, monospace; font-size: .58rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
-.rubric-ledger { border-top: 1px solid #ded8ca; padding-top: .7rem; }
-.submit-sheet { position: relative; background-image: linear-gradient(to bottom, transparent 0, transparent 31px, rgba(169,196,181,.16) 32px); background-size: 100% 32px; }
+.pencil-path::before { content: ''; position: absolute; left: 7%; right: 7%; top: .5rem; height: 2px; background: #82b79e; transform: rotate(-.4deg); opacity: .75; }
+.pencil-path::after { content: '→'; position: absolute; right: 5%; top: -.15rem; color: #0f6b5a; font-size: 1.1rem; }
+.pencil-path span { position: absolute; left: 18%; top: .35rem; width: 3px; height: 3px; border-radius: 50%; background: #d8864b; box-shadow: 14rem 2px 0 #d8864b, 28rem -1px 0 #d8864b; }
+.ledger-tag { position: absolute; right: 1.15rem; top: 1rem; color: #718c83; font-family: ui-monospace, monospace; font-size: .53rem; letter-spacing: .1em; text-transform: uppercase; }
+.ledger-tag-light { position: static; display: inline-block; color: #b9dfcd; margin-bottom: 1rem; }
+.field-caption { display: block; margin-bottom: .45rem; color: #718c83; font-family: ui-monospace, monospace; font-size: .58rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.rubric-ledger { border-top: 1px solid #d8d9c7; padding-top: .7rem; }
+.submit-sheet { position: relative; background-image: linear-gradient(to bottom, transparent 0, transparent 31px, rgba(78, 137, 113, .16) 32px); background-size: 100% 32px; }
 .submit-sheet .ledger-tag { top: .7rem; }
 
 @media (min-width: 1280px) {
@@ -133,26 +134,26 @@ button:not(:disabled), a[href] { cursor: pointer; }
   border-radius: 999px;
 }
 .submit-status-loading {
-  color: #6f5425;
-  border: 1px solid #e4c98f;
-  background: #fff8e6;
+  color: #704824;
+  border: 1px solid #e7b77b;
+  background: #fff5df;
 }
 .submit-status-loading .submit-status-icon {
-  color: #9a7128;
-  background: #f4dfaa;
+  color: #b66c2f;
+  background: #f7d7a7;
 }
 .submit-status-success {
-  color: #16563f;
-  border: 1px solid #9fc9ab;
-  background: #e8f5eb;
-  box-shadow: 0 8px 22px rgba(31, 107, 87, 0.1);
+  color: #145844;
+  border: 1px solid #9bcdb5;
+  background: #e4f4ea;
+  box-shadow: 0 8px 22px rgba(15, 107, 90, 0.12);
 }
 .submit-status-success .submit-status-icon {
   color: #fff;
-  background: #1f6b57;
+  background: #0f6b5a;
 }
 .submit-button-loading {
-  box-shadow: 0 0 0 4px rgba(231, 188, 101, 0.2), 0 8px 20px rgba(31, 107, 87, 0.22);
+  box-shadow: 0 0 0 4px rgba(216, 134, 75, 0.22), 0 8px 20px rgba(15, 107, 90, 0.24);
 }
 @keyframes submit-status-in {
   from { opacity: 0; transform: translateY(-4px); }
@@ -160,4 +161,217 @@ button:not(:disabled), a[href] { cursor: pointer; }
 }
 @media (prefers-reduced-motion: reduce) {
   .submit-status { animation: none; }
+}
+
+
+/* Industry distinction: forest uses living leaf green; aquaculture uses clear water teal. Text labels and icons repeat the meaning so color is never the only signal. */
+.industry-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: .38rem .72rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.industry-chip-forest {
+  color: #225d43;
+  border-color: #abd0b8;
+  background: #e5f2e6;
+}
+.industry-chip-water {
+  color: #075c70;
+  border-color: #9bced5;
+  background: #e3f3f5;
+}
+.group-card {
+  color: #244338;
+  border-color: #c3d8c8;
+  background: #f5faf3;
+}
+.group-card:hover,
+.group-card:focus-visible {
+  transform: translateY(-1px);
+  outline: 3px solid rgba(15, 107, 90, .16);
+}
+.group-card-forest:hover,
+.group-card-forest:focus-visible {
+  border-color: #6da77f;
+  background: #edf7ed;
+}
+.group-card-water {
+  color: #174b57;
+  border-color: #b4d8dd;
+  background: #eff9fa;
+}
+.group-card-water:hover,
+.group-card-water:focus-visible {
+  border-color: #4d9eae;
+  background: #e5f5f7;
+}
+.group-card-label {
+  color: #527568;
+}
+.group-card-water .group-card-label { color: #3e7e89; }
+.group-card-active.group-card-forest {
+  border-color: #287451;
+  background: #287451;
+  box-shadow: 0 12px 24px rgba(40, 116, 81, .18);
+}
+.group-card-active.group-card-water {
+  border-color: #08758b;
+  background: #08758b;
+  box-shadow: 0 12px 24px rgba(8, 117, 139, .18);
+}
+.topic-detail-card { border: 1px solid #c9ddd0; background: #fbfdf8; }
+.topic-detail-water { border-color: #b7dce1; background: #fbfefe; }
+.topic-image-forest { background: #dcecdf; }
+.topic-image-water { background: #d7edf0; }
+.topic-code {
+  border-width: 1px;
+  border-style: solid;
+  font-weight: 700;
+}
+.topic-code-forest { border-color: #aad0b5; background: rgba(237, 249, 237, .92); color: #225d43; }
+.topic-code-water { border-color: #a1d2d9; background: rgba(237, 250, 251, .94); color: #075c70; }
+@media (max-width: 639px) {
+  .industry-chip { font-size: .62rem; padding: .34rem .58rem; }
+  .group-card { min-height: 5.6rem; }
+}
+
+
+/* Report-code system: every B1/B2 code inherits its industry's visual language across cards, forms, and local statistics. */
+.report-code-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: .3rem .58rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .7rem;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+.report-code-chip-forest {
+  color: #225d43;
+  border-color: #a8cdb1;
+  background: #e7f3e7;
+}
+.report-code-chip-water {
+  color: #075c70;
+  border-color: #9dcfd6;
+  background: #e4f4f6;
+}
+.report-field-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  min-height: 1.7rem;
+}
+.report-progress-card,
+.report-plan-card {
+  border-color: #c9ddd0;
+}
+.report-progress-forest,
+.report-plan-forest {
+  border-color: #c3dcc8;
+  background: #f3faf2;
+}
+.report-progress-water,
+.report-plan-water {
+  border-color: #b9dce1;
+  background: #f1fafb;
+}
+.report-progress-card .report-code-chip,
+.report-plan-card .report-code-chip {
+  flex-shrink: 0;
+}
+@media (max-width: 639px) {
+  .report-field-heading { align-items: flex-start; flex-direction: column; gap: .4rem; }
+  .report-field-heading .report-code-chip { align-self: flex-start; }
+}
+
+
+/* Report-card interaction: a restrained lift, color-led border, and readable focus ring make each B1/B2 card feel actionable without distracting from academic content. */
+.report-plan-card,
+.report-progress-card {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  transition: transform 180ms cubic-bezier(.23, 1, .32, 1), box-shadow 180ms cubic-bezier(.23, 1, .32, 1), border-color 180ms cubic-bezier(.23, 1, .32, 1), background-color 180ms cubic-bezier(.23, 1, .32, 1);
+}
+.report-plan-card::before,
+.report-progress-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  opacity: .35;
+  transition: width 180ms cubic-bezier(.23, 1, .32, 1), opacity 180ms cubic-bezier(.23, 1, .32, 1);
+}
+.report-plan-forest::before,
+.report-progress-forest::before { background: #287451; }
+.report-plan-water::before,
+.report-progress-water::before { background: #08758b; }
+.report-plan-card:hover,
+.report-plan-card:focus-within,
+.report-progress-card:hover,
+.report-progress-card:focus-within {
+  transform: translateY(-3px);
+}
+.report-plan-forest:hover,
+.report-plan-forest:focus-within,
+.report-progress-forest:hover,
+.report-progress-forest:focus-within {
+  border-color: #79ad86;
+  background: #eef8ed;
+  box-shadow: 0 12px 24px rgba(40, 116, 81, .13);
+}
+.report-plan-water:hover,
+.report-plan-water:focus-within,
+.report-progress-water:hover,
+.report-progress-water:focus-within {
+  border-color: #5ba9b5;
+  background: #e9f7f8;
+  box-shadow: 0 12px 24px rgba(8, 117, 139, .13);
+}
+.report-plan-card:hover::before,
+.report-plan-card:focus-within::before,
+.report-progress-card:hover::before,
+.report-progress-card:focus-within::before {
+  width: 5px;
+  opacity: 1;
+}
+.report-plan-card:hover .report-code-chip,
+.report-plan-card:focus-within .report-code-chip,
+.report-progress-card:hover .report-code-chip,
+.report-progress-card:focus-within .report-code-chip {
+  transform: translateX(2px);
+}
+.report-plan-card .report-code-chip,
+.report-progress-card .report-code-chip {
+  transition: transform 180ms cubic-bezier(.23, 1, .32, 1), background-color 180ms cubic-bezier(.23, 1, .32, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .report-plan-card,
+  .report-progress-card,
+  .report-plan-card::before,
+  .report-progress-card::before,
+  .report-plan-card .report-code-chip,
+  .report-progress-card .report-code-chip {
+    transition: none;
+  }
+  .report-plan-card:hover,
+  .report-plan-card:focus-within,
+  .report-progress-card:hover,
+  .report-progress-card:focus-within {
+    transform: none;
+  }
 }
