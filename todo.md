@@ -1,9 +1,9 @@
 # Checklist — GitHub repository và GitHub Pages
 
-- [ ] Kiểm tra tài khoản GitHub, remote và trạng thái mã nguồn hiện tại.
-- [ ] Chuẩn bị commit sạch, loại trừ node_modules, dist, log và cache.
-- [ ] Tạo repository GitHub riêng tư với tên dễ chia sẻ.
-- [ ] Đẩy mã nguồn và workflow GitHub Actions lên nhánh main.
-- [ ] Kiểm tra workflow build, test, upload artifact và deploy Pages.
-- [ ] Xác nhận URL Pages hoặc ghi rõ bước cần người dùng bật thủ công.
-- [ ] Lưu checkpoint và bàn giao repository cho người dùng.
+- [x] Kiểm tra tài khoản GitHub, remote và trạng thái mã nguồn hiện tại.
+- [x] Chuẩn bị commit sạch, loại trừ node_modules, dist, log và cache.
+- [x] Tạo repository GitHub riêng tư với tên dễ chia sẻ.
+- [x] Đẩy mã nguồn và workflow GitHub Actions lên nhánh main.
+- [x] Kiểm tra workflow build, test, upload artifact và deploy Pages.
+- [x] Xác nhận URL Pages hoạt động HTTP 200 và asset logo HTTP 200.
+- [x] Chuẩn bị lưu checkpoint và bàn giao repository cho người dùng.
