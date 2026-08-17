@@ -1,10 +1,10 @@
 # Checklist — Bảo vệ dữ liệu website Công nghệ 12
 
-- [ ] Audit dữ liệu tĩnh, localStorage, form và chức năng xuất file.
-- [ ] Phân biệt dữ liệu có thể bảo vệ ở frontend với dữ liệu phải bảo vệ ở Google Sheet/backend.
-- [ ] Thêm xác thực schema, chuẩn hóa dữ liệu và chống bản ghi sai cấu trúc.
-- [ ] Thêm cơ chế khóa cấu hình/nội dung khỏi chỉnh sửa nhầm trong giao diện.
-- [ ] Bổ sung cảnh báo quyền hạn, nguồn dữ liệu chính thức và thao tác xóa/xuất.
-- [ ] Kiểm tra CSP/HTTPS/asset, XSS cơ bản và không để lộ bí mật.
-- [ ] Chạy check/test/build, kiểm thử bảo mật và deploy GitHub Pages.
-- [ ] Cập nhật README/hướng dẫn giới hạn bảo mật và lưu checkpoint.
+- [x] Audit dữ liệu tĩnh, localStorage, form và chức năng xuất file.
+- [x] Phân biệt dữ liệu frontend với nguồn chính thức Google Sheet/backend.
+- [x] Thêm chuẩn hóa rubric/bản ghi, giới hạn đầu vào và loại bản ghi sai cấu trúc.
+- [x] Khóa logic mã báo cáo theo nhóm và không cho sửa/xóa bản ghi đã gửi trong giao diện.
+- [x] Bổ sung mục Bảo vệ dữ liệu, cảnh báo nguồn chính thức và giới hạn xóa/xuất.
+- [x] Kiểm tra link HTTPS Google Drive/Slides, bảo vệ ô CSV/Excel và không thêm bí mật frontend.
+- [x] Chạy check/test/build, kiểm thử desktop/mobile và deploy GitHub Actions run 32067481923 thành công.
+- [x] Cập nhật README/hồ sơ audit với giới hạn bảo mật; chuẩn bị lưu checkpoint.
