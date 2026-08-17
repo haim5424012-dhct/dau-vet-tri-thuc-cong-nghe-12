@@ -1,9 +1,8 @@
-# Checklist — GitHub repository và GitHub Pages
+# Checklist — Khắc phục lỗi 404 GitHub Pages
 
-- [x] Kiểm tra tài khoản GitHub, remote và trạng thái mã nguồn hiện tại.
-- [x] Chuẩn bị commit sạch, loại trừ node_modules, dist, log và cache.
-- [x] Tạo repository GitHub riêng tư với tên dễ chia sẻ.
-- [x] Đẩy mã nguồn và workflow GitHub Actions lên nhánh main.
-- [x] Kiểm tra workflow build, test, upload artifact và deploy Pages.
-- [x] Xác nhận URL Pages hoạt động HTTP 200 và asset logo HTTP 200.
-- [x] Chuẩn bị lưu checkpoint và bàn giao repository cho người dùng.
+- [ ] Kiểm tra URL Pages, trạng thái Pages và lần chạy Actions mới nhất.
+- [ ] Kiểm tra artifact có index.html ở thư mục gốc và base path đúng tên repository.
+- [ ] Xác định lỗi do Pages, quyền truy cập, cache hoặc sai URL project site.
+- [ ] Sửa workflow/cấu hình nếu cần và đẩy commit mới.
+- [ ] Chạy lại GitHub Actions và kiểm tra HTTP trang chính, CSS, JavaScript, ảnh.
+- [ ] Bàn giao URL chính xác và hướng dẫn học sinh tải lại trang nếu còn cache.
