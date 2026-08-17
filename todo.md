@@ -1,10 +1,9 @@
-# Checklist — Bảo vệ dữ liệu website Công nghệ 12
+# Checklist — Thông báo lỗi nhập liệu dễ sửa
 
-- [x] Audit dữ liệu tĩnh, localStorage, form và chức năng xuất file.
-- [x] Phân biệt dữ liệu frontend với nguồn chính thức Google Sheet/backend.
-- [x] Thêm chuẩn hóa rubric/bản ghi, giới hạn đầu vào và loại bản ghi sai cấu trúc.
-- [x] Khóa logic mã báo cáo theo nhóm và không cho sửa/xóa bản ghi đã gửi trong giao diện.
-- [x] Bổ sung mục Bảo vệ dữ liệu, cảnh báo nguồn chính thức và giới hạn xóa/xuất.
-- [x] Kiểm tra link HTTPS Google Drive/Slides, bảo vệ ô CSV/Excel và không thêm bí mật frontend.
-- [x] Chạy check/test/build, kiểm thử desktop/mobile và deploy GitHub Actions run 32067481923 thành công.
-- [x] Cập nhật README/hồ sơ audit với giới hạn bảo mật; chuẩn bị lưu checkpoint.
+- [ ] Audit các trường biểu mẫu và thông báo lỗi hiện tại.
+- [ ] Thêm trạng thái lỗi theo từng trường: mã nhóm, mã báo cáo, link.
+- [ ] Hiển thị hướng dẫn sửa ngay dưới ô nhập và khi gửi thiếu/sai.
+- [ ] Tự chuẩn hóa chữ hoa/khoảng trắng ở mã lớp, mã nhóm và mã báo cáo.
+- [ ] Giữ accessibility: aria-invalid, aria-describedby và focus tới lỗi đầu tiên.
+- [ ] Chạy check/test/build, kiểm tra desktop/mobile và deploy Pages.
+- [ ] Lưu checkpoint và bàn giao cách học sinh sửa lỗi.

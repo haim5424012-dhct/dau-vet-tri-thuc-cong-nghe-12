@@ -90,3 +90,8 @@ Bản kiểm tra cuối xác nhận header desktop hiển thị đủ tên giáo
 ## Audit bảo vệ dữ liệu
 
 Đã bổ sung chuẩn hóa và giới hạn độ dài dữ liệu nhập, kiểm tra mã báo cáo khớp nhóm, chỉ chấp nhận link HTTPS thuộc Google Drive/Slides, loại bản ghi localStorage sai cấu trúc khỏi thống kê, và bảo vệ CSV/Excel khỏi chuỗi có thể bị hiểu là công thức. Giao diện có mục “Bảo vệ dữ liệu” nêu rõ Google Sheet là nguồn chính thức, xóa bản nháp không xóa bản ghi đã gửi, và website tĩnh không thể chống sửa JavaScript/localStorage ở cấp hệ thống. Kiểm thử full-page desktop/mobile không ghi nhận tràn bố cục.
+
+
+## Kiểm thử thông báo lỗi nhập liệu
+
+Đã bổ sung thông báo lỗi theo từng trường cho mã nhóm, mã báo cáo và link Google Drive/Slides. Mã nhóm tự chuẩn hóa chữ hoa và loại khoảng trắng; lỗi có `aria-invalid`, `aria-describedby`, màu viền rõ và `role=alert`. Khi bấm gửi, hệ thống đánh dấu các mục sai và đưa focus tới lỗi đầu tiên. Kiểm thử full-page desktop/mobile không ghi nhận tràn bố cục.
