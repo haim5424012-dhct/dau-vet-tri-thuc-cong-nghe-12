@@ -10,6 +10,13 @@ import { ArrowDown, ArrowRight, BarChart3, Check, ClipboardList, Download, Exter
 import * as XLSX from "xlsx";
 
 const ASSET_BASE = `${import.meta.env.BASE_URL}assets`;
+const COFFEE_MARK = `${ASSET_BASE}/coffee-tree-mark.png`;
+const TEACHER_PROFILE = {
+  name: "Võ Văn Bé Hai",
+  role: "Giáo viên Công nghệ 12 · Tổ chuyên môn",
+  school: "Trường Trung học phổ thông Đốc Binh Kiều – Cai Lậy",
+  motto: "Học bằng tò mò. Quyết định bằng bằng chứng.",
+};
 
 const FORM_CONFIG = {
   actionUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfr6aguXg_kGhF_IM0s-mTWCrN0u0lK2eyPIVt7pfKhBnuAxw/formResponse",
@@ -191,6 +198,15 @@ export default function Home() {
         <nav className={`${mobileNav ? "flex" : "hidden"} absolute left-0 top-[74px] w-full flex-col gap-4 border-b border-[#d9d3c6] bg-[#f5f1e8] px-5 py-5 text-sm font-semibold lg:static lg:flex lg:w-auto lg:flex-row lg:border-0 lg:bg-transparent lg:p-0`}><a href="#quy-trinh">Quy trình</a><a href="#chu-de">8 nhóm chủ đề</a><a href="#rubric">Tự chấm</a><a href="#thong-ke">Thống kê</a><a href="#huong-dan" className="text-[#1f6b57]">Hướng dẫn giáo viên</a><a href="#kiem-chung">Kiểm chứng AI</a></nav>
         <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setMobileNav(!mobileNav)} aria-label="Mở menu"><Menu size={20} /></Button>
       </div>
+      <div className="border-t border-[#e3ded2] bg-[#f0ece2]/75 px-5 py-3 lg:px-10">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#a9c4b5] bg-[#e4efe8] p-1.5 shadow-sm"><img src={COFFEE_MARK} alt="Biểu tượng cây cà phê có quả chín" className="h-full w-full object-contain" /></div>
+            <div className="min-w-0"><p className="truncate text-sm font-semibold text-[#315d4d]">{TEACHER_PROFILE.name} <span className="font-normal text-[#87938a]">· {TEACHER_PROFILE.role}</span></p><p className="truncate text-xs text-[#748279]">{TEACHER_PROFILE.school}</p></div>
+          </div>
+          <div className="hidden text-right md:block"><p className="font-serif text-base text-[#315d4d]">{TEACHER_PROFILE.motto}</p><p className="mt-0.5 text-[11px] uppercase tracking-[0.14em] text-[#87938a]">Nội dung học tập phục vụ dạy học</p></div>
+        </div>
+      </div>
     </header>
 
     <main id="top"><aside className="journal-rail" aria-label="Mục lục sổ tay"><span className="journal-rail-mark">INDEX / 01</span><a href="#quy-trinh">Quy trình</a><a href="#chu-de">YCCĐ · NLS</a><a href="#rubric">Rubric</a><a href="#gui-bai">Nộp bài</a><a href="#kiem-chung">Kiểm chứng AI</a><span className="journal-rail-line" /></aside>
@@ -217,6 +233,6 @@ export default function Home() {
 
       <section id="huong-dan" className="mx-auto max-w-[1440px] px-5 py-12 lg:px-10"><div className="flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-[#cbd8ce] bg-[#e4efe8] p-6"><div><p className="eyebrow">Dành cho giáo viên</p><p className="mt-2 text-sm text-[#51675b]">Sau khi cấu hình Google Form, mở Google Sheet để xem toàn bộ bản ghi. Không cần server, token hoặc nơi lưu file. Website chỉ là giao diện nộp bài; Google Sheet mới là nguồn chính thức và giáo viên cần đối chiếu link, nguồn trích dẫn, sản phẩm và phần thuyết trình trước khi chốt điểm.</p></div><a href="https://docs.google.com/forms/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-[#1f6b57]">Mở Google Forms <Link2 size={15} /></a></div></section>
     </main>
-    <footer className="border-t border-[#d9d3c6] px-5 py-8 text-center text-xs text-[#7c8b83]">DẤU VẾT TRI THỨC / CÔNG NGHỆ 12 · Công nghệ 12 Lâm nghiệp – Thủy sản · Dữ liệu tự chấm là phản tư tham khảo · AI hỗ trợ, con người kiểm chứng</footer>
+    <footer className="border-t border-[#d9d3c6] bg-[#f0ece2] px-5 py-8 lg:px-10"><div className="mx-auto flex max-w-[1440px] flex-col gap-6 md:flex-row md:items-center md:justify-between"><div className="flex items-center gap-3"><div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#a9c4b5] bg-[#e4efe8] p-2"><img src={COFFEE_MARK} alt="Cây cà phê có quả chín" className="h-full w-full object-contain" /></div><div><p className="font-serif text-lg text-[#315d4d]">{TEACHER_PROFILE.name}</p><p className="text-xs text-[#748279]">{TEACHER_PROFILE.role}</p><p className="mt-1 text-xs text-[#87938a]">{TEACHER_PROFILE.school}</p></div></div><div className="max-w-md text-left text-xs leading-6 text-[#7c8b83] md:text-right"><p className="font-semibold text-[#315d4d]">DẤU VẾT TRI THỨC / CÔNG NGHỆ 12</p><p>Công nghệ 12 Lâm nghiệp – Thủy sản · Dữ liệu tự chấm là phản tư tham khảo · AI hỗ trợ, con người kiểm chứng.</p><p className="mt-1">{TEACHER_PROFILE.motto}</p></div></div></footer>
   </div>;
 }

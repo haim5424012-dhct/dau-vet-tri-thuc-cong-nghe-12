@@ -77,3 +77,8 @@ Ngày 17/08/2026, giao diện desktop 1280×720 và mobile 375×812 hiển thị
 ## Kiểm thử thống kê theo mã báo cáo và tiến độ
 
 Sau khi bổ sung bộ lọc mã báo cáo, giao diện desktop và mobile hiển thị ổn định. Khu vực Thống kê có ba bộ lọc mã lớp, mã nhóm và mã báo cáo; 16 thẻ tiến độ hiển thị mã, chủ đề, phạm vi, trạng thái “Đã nộp/Chưa nộp” và thời điểm nộp gần nhất. Bảng bản ghi hiển thị thêm mã báo cáo, ngày nộp và trạng thái. Trên mobile, các thẻ xếp một cột và bảng giữ cuộn ngang để không làm vỡ bố cục.
+
+
+## Kiểm thử nhận diện giáo viên và biểu tượng cây cà phê
+
+Khu vực nhận diện mới nằm dưới thanh điều hướng, gồm biểu tượng cây cà phê có quả chín, tên giáo viên, vai trò, trường và thông điệp học tập dựa trên bằng chứng. Trên desktop, thông tin giáo viên và khẩu hiệu nằm cùng một hàng; trên mobile, nội dung được rút gọn theo chiều rộng, không làm tràn bố cục. Biểu tượng được dùng thêm ở footer và favicon, giúp nhận diện nhất quán mà không thay thế tên dự án DẤU VẾT TRI THỨC CÔNG NGHỆ 12.

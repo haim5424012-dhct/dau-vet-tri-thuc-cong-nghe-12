@@ -1,9 +1,9 @@
-# Checklist — Thống kê tiến độ báo cáo học kỳ
+# Checklist — Nhận diện giáo viên và biểu tượng cây cà phê
 
-- [x] Kiểm tra cấu trúc SubmissionRecord và dữ liệu localStorage hiện tại.
-- [x] Thêm bộ lọc theo mã báo cáo N1-B1 đến N8-B2.
-- [x] Hiển thị ngày nộp theo từng bản ghi trong bảng thống kê.
-- [x] Hiển thị trạng thái tiến độ theo mã báo cáo: Chưa nộp / Đã nộp.
-- [x] Giữ đúng tập dữ liệu lọc khi xuất CSV và Excel.
-- [x] Chạy check/test/build và kiểm tra giao diện desktop/mobile/full-page.
-- [x] Đẩy GitHub Actions thành công, kiểm tra GitHub Pages HTTP 200; chuẩn bị lưu checkpoint.
+- [ ] Xác định thông tin giáo viên, môn học, trường và thông tin liên hệ được phép công khai.
+- [ ] Tạo biểu tượng cây cà phê có quả chín, nền trong suốt, dùng được ở kích thước nhỏ.
+- [ ] Tích hợp biểu tượng vào header/favicon hoặc khu vực nhận diện dự án.
+- [ ] Bổ sung khu vực thông tin giáo viên theo bố cục mẫu, giữ tên website là nhận diện chính.
+- [ ] Bổ sung thông tin tác giả/liên hệ ở footer hoặc thẻ giáo viên.
+- [ ] Kiểm tra tương phản, responsive desktop/mobile và asset GitHub Pages.
+- [ ] Chạy check/test/build, deploy và lưu checkpoint.
