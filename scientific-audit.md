@@ -82,3 +82,6 @@ Sau khi bổ sung bộ lọc mã báo cáo, giao diện desktop và mobile hiể
 ## Kiểm thử nhận diện giáo viên và biểu tượng cây cà phê
 
 Khu vực nhận diện mới nằm dưới thanh điều hướng, gồm biểu tượng cây cà phê có quả chín, tên giáo viên, vai trò, trường và thông điệp học tập dựa trên bằng chứng. Trên desktop, thông tin giáo viên và khẩu hiệu nằm cùng một hàng; trên mobile, nội dung được rút gọn theo chiều rộng, không làm tràn bố cục. Biểu tượng được dùng thêm ở footer và favicon, giúp nhận diện nhất quán mà không thay thế tên dự án DẤU VẾT TRI THỨC CÔNG NGHỆ 12.
+
+
+Bản kiểm tra cuối xác nhận header desktop hiển thị đủ tên giáo viên, vai trò, trường và khẩu hiệu; mobile rút gọn tên trường/khẩu hiệu nhưng vẫn giữ avatar, tên giáo viên và tên dự án. Asset `coffee-tree-mark.png` được đóng gói trong `client/public/assets`, GitHub Pages trả HTTP 200 cho trang, ảnh và favicon.
