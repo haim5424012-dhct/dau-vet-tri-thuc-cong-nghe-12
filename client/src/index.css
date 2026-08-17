@@ -259,14 +259,16 @@ button:not(:disabled), a[href] { cursor: pointer; }
   white-space: nowrap;
 }
 .report-code-chip-forest {
-  color: #225d43;
-  border-color: #a8cdb1;
-  background: #e7f3e7;
+  color: #ffffff;
+  border-color: #287451;
+  background: #287451;
+  box-shadow: 0 3px 10px rgba(40, 116, 81, .16);
 }
 .report-code-chip-water {
-  color: #075c70;
-  border-color: #9dcfd6;
-  background: #e4f4f6;
+  color: #ffffff;
+  border-color: #08758b;
+  background: #08758b;
+  box-shadow: 0 3px 10px rgba(8, 117, 139, .16);
 }
 .report-field-heading {
   display: flex;
@@ -281,13 +283,13 @@ button:not(:disabled), a[href] { cursor: pointer; }
 }
 .report-progress-forest,
 .report-plan-forest {
-  border-color: #c3dcc8;
-  background: #f3faf2;
+  border-color: #a9cfb0;
+  background: #eef8ed;
 }
 .report-progress-water,
 .report-plan-water {
-  border-color: #b9dce1;
-  background: #f1fafb;
+  border-color: #9fd0d7;
+  background: #eaf7f8;
 }
 .report-progress-card .report-code-chip,
 .report-plan-card .report-code-chip {
@@ -330,16 +332,16 @@ button:not(:disabled), a[href] { cursor: pointer; }
 .report-plan-forest:focus-within,
 .report-progress-forest:hover,
 .report-progress-forest:focus-within {
-  border-color: #79ad86;
-  background: #eef8ed;
+  border-color: #287451;
+  background: #e5f4e4;
   box-shadow: 0 12px 24px rgba(40, 116, 81, .13);
 }
 .report-plan-water:hover,
 .report-plan-water:focus-within,
 .report-progress-water:hover,
 .report-progress-water:focus-within {
-  border-color: #5ba9b5;
-  background: #e9f7f8;
+  border-color: #08758b;
+  background: #ddf1f3;
   box-shadow: 0 12px 24px rgba(8, 117, 139, .13);
 }
 .report-plan-card:hover::before,

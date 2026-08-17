@@ -1,7 +1,7 @@
-# Checklist — Xuất link GitHub Pages cập nhật
+# Checklist — Sửa màu mã báo cáo trên production
 
-- [ ] Đối chiếu commit local với nhánh main trên GitHub.
-- [ ] Đồng bộ các thay đổi màu, hover và tổ chuyên môn Sinh học.
-- [ ] Chờ GitHub Actions triển khai thành công.
-- [ ] Kiểm tra bundle production có nội dung mới và HTTP 200.
-- [ ] Xuất link mới kèm hướng dẫn tải lại cache.
+- [ ] Kiểm tra HTML/CSS/JS production và ảnh người dùng.
+- [ ] Xác định vì sao màu mã báo cáo chưa đủ nổi bật hoặc chưa áp dụng.
+- [ ] Sửa style/markup cho chú giải, thẻ kế hoạch, form và thống kê.
+- [ ] Triển khai lại và kiểm tra trực tiếp đủ 16 mã báo cáo.
+- [ ] Bàn giao link production đã xác minh.
