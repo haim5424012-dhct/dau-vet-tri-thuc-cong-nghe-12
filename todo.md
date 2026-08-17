@@ -1,7 +1,6 @@
-# Checklist — Mã lớp, mã nhóm và trạng thái nộp bài
+# Checklist — Sửa controlled/uncontrolled input
 
-- [x] Bổ sung trường mã lớp và mã nhóm trên giao diện nộp bài.
-- [x] Thêm hai trường tương ứng vào Google Form và lấy entry ID mới.
-- [x] Đồng bộ payload website với hai entry ID mới.
-- [x] Thêm loading state, khóa nút gửi khi đang gửi và thông báo thành công rõ ràng.
-- [x] Kiểm thử build, gửi payload mẫu và chuẩn bị lưu checkpoint.
+- [x] Kiểm tra state form và dữ liệu bản nháp trong localStorage.
+- [x] Chuẩn hóa mọi trường nhập về chuỗi rỗng khi dữ liệu thiếu.
+- [x] Chạy TypeScript/build và kiểm tra console trên trang chính.
+- [x] Lưu checkpoint phiên bản sửa lỗi.
