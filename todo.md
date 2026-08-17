@@ -1,9 +1,7 @@
-# Checklist — Kiểm tra quyền xem báo cáo
+# Checklist — Tinh gọn khu vực bảo vệ dữ liệu
 
-- [x] Kiểm tra ô link và validation Google Drive/Slides hiện tại.
-- [x] Thêm nút “Kiểm tra quyền xem” cạnh ô link.
-- [x] Mở link hợp lệ ở tab mới, không gửi dữ liệu và không làm mất bản nháp.
-- [x] Hiển thị hướng dẫn kiểm tra bằng cửa sổ ẩn danh và xử lý yêu cầu đăng nhập/không có quyền.
-- [x] Chặn thao tác kiểm tra khi link rỗng, sai định dạng hoặc còn là link mẫu.
-- [x] Kiểm tra responsive, accessibility, check/test/build; GitHub Actions run 32069920687 thành công, Pages HTTP 200.
-- [x] Chuẩn bị lưu checkpoint và bàn giao quy trình tự kiểm tra.
+- [ ] Tìm đúng thẻ “Frontend không phải két sắt” và nội dung kỹ thuật liên quan.
+- [ ] Loại bỏ thẻ khỏi giao diện học sinh.
+- [ ] Giữ lại hướng dẫn quyền xem Drive, nguồn dữ liệu và không chia sẻ thông tin nhạy cảm.
+- [ ] Chạy check/test/build và kiểm tra desktop/mobile.
+- [ ] Đẩy GitHub Actions, kiểm tra Pages và lưu checkpoint.
