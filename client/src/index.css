@@ -80,3 +80,30 @@ button:not(:disabled), a[href] { cursor: pointer; }
   header > div { padding-left: 8rem !important; }
 }
 @media (max-width: 767px) { .pencil-path { display: none; } .ledger-tag { font-size: .48rem; } }
+
+/* Mobile field-journal: touch-first submission sheet, readable inputs, and full-width actions. */
+@media (max-width: 767px) {
+  .submit-sheet input[type='text'],
+  .submit-sheet input[type='url'] {
+    min-height: 3.25rem;
+    font-size: 16px;
+  }
+  .submit-sheet .ledger-tag {
+    position: static;
+    display: block;
+    margin: .25rem 1.25rem 0;
+  }
+  #gui-bai .section-title {
+    max-width: 15ch;
+    font-size: clamp(2.35rem, 12vw, 3.4rem);
+  }
+  #gui-bai .submit-sheet {
+    border-radius: 1.25rem;
+  }
+  #gui-bai .submit-sheet [data-slot='card-header'] {
+    padding-top: 1.1rem;
+  }
+  #gui-bai .submit-sheet [data-slot='card-content'] {
+    padding-bottom: 1.25rem;
+  }
+}
